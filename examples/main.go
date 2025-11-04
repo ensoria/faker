@@ -3,8 +3,8 @@ package main
 import (
 	"time"
 
-	"github.com/nolafw/faker/pkg/faker"
-	"github.com/nolafw/faker/pkg/faker/provider/locale/ja_JP"
+	"github.com/ensoria/faker/pkg/faker"
+	"github.com/ensoria/faker/pkg/faker/provider/locale/ja_JP"
 )
 
 func main() {

@@ -4,8 +4,8 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/nolafw/faker/pkg/faker"
-	"github.com/nolafw/faker/pkg/faker/provider/locale/ja_JP"
+	"github.com/ensoria/faker/pkg/faker"
+	"github.com/ensoria/faker/pkg/faker/provider/locale/ja_JP"
 )
 
 var _ = Describe("Faker", func() {

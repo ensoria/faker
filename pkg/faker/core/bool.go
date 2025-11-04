@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/nolafw/faker/pkg/faker/common/log"
+	"github.com/ensoria/faker/pkg/faker/common/log"
 )
 
 type RandBool struct {

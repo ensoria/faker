@@ -1,20 +1,20 @@
 package faker
 
 import (
-	"github.com/nolafw/faker/pkg/faker/common/util"
-	"github.com/nolafw/faker/pkg/faker/core"
-	"github.com/nolafw/faker/pkg/faker/generator/address"
-	"github.com/nolafw/faker/pkg/faker/generator/barcode"
-	"github.com/nolafw/faker/pkg/faker/generator/color"
-	"github.com/nolafw/faker/pkg/faker/generator/company"
-	"github.com/nolafw/faker/pkg/faker/generator/file"
-	"github.com/nolafw/faker/pkg/faker/generator/image"
-	"github.com/nolafw/faker/pkg/faker/generator/internet"
-	"github.com/nolafw/faker/pkg/faker/generator/lorem"
-	"github.com/nolafw/faker/pkg/faker/generator/person"
-	"github.com/nolafw/faker/pkg/faker/provider"
-	"github.com/nolafw/faker/pkg/faker/provider/global"
-	"github.com/nolafw/faker/pkg/faker/provider/locale/en_US"
+	"github.com/ensoria/faker/pkg/faker/common/util"
+	"github.com/ensoria/faker/pkg/faker/core"
+	"github.com/ensoria/faker/pkg/faker/generator/address"
+	"github.com/ensoria/faker/pkg/faker/generator/barcode"
+	"github.com/ensoria/faker/pkg/faker/generator/color"
+	"github.com/ensoria/faker/pkg/faker/generator/company"
+	"github.com/ensoria/faker/pkg/faker/generator/file"
+	"github.com/ensoria/faker/pkg/faker/generator/image"
+	"github.com/ensoria/faker/pkg/faker/generator/internet"
+	"github.com/ensoria/faker/pkg/faker/generator/lorem"
+	"github.com/ensoria/faker/pkg/faker/generator/person"
+	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/faker/pkg/faker/provider/global"
+	"github.com/ensoria/faker/pkg/faker/provider/locale/en_US"
 )
 
 type Faker struct {

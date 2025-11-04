@@ -14,7 +14,7 @@ Go >= 1.22
 ## Installation
 
 ```
-go get github.com/nolafw/faker/pkg/faker
+go get github.com/ensoria/faker/pkg/faker
 ```
 
 ## fakerのインスタンス作成

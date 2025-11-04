@@ -1,4 +1,4 @@
-module github.com/nolafw/faker
+module github.com/ensoria/faker
 
 go 1.24.2
 

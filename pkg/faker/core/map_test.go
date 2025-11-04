@@ -1,8 +1,8 @@
 package core_test
 
 import (
-	"github.com/nolafw/faker/pkg/faker/common/util"
-	"github.com/nolafw/faker/pkg/faker/core"
+	"github.com/ensoria/faker/pkg/faker/common/util"
+	"github.com/ensoria/faker/pkg/faker/core"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )

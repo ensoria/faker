@@ -1,7 +1,7 @@
 package ja_JP
 
 import (
-	"github.com/nolafw/faker/pkg/faker/provider"
+	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
 func New() *provider.Localized {

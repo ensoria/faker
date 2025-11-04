@@ -1,6 +1,6 @@
 package en_US
 
-import "github.com/nolafw/faker/pkg/faker/provider"
+import "github.com/ensoria/faker/pkg/faker/provider"
 
 func CreateAddresses() *provider.Addresses {
 	return &provider.Addresses{

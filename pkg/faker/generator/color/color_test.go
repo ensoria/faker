@@ -4,11 +4,11 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/nolafw/faker/pkg/faker/common/util"
-	"github.com/nolafw/faker/pkg/faker/core"
-	"github.com/nolafw/faker/pkg/faker/generator/color"
-	"github.com/nolafw/faker/pkg/faker/provider"
-	"github.com/nolafw/faker/pkg/faker/provider/global"
+	"github.com/ensoria/faker/pkg/faker/common/util"
+	"github.com/ensoria/faker/pkg/faker/core"
+	"github.com/ensoria/faker/pkg/faker/generator/color"
+	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/faker/pkg/faker/provider/global"
 )
 
 var _ = Describe("Color", func() {

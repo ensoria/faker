@@ -3,9 +3,9 @@ package lorem
 import (
 	"strings"
 
-	"github.com/nolafw/faker/pkg/faker/common/util"
-	"github.com/nolafw/faker/pkg/faker/core"
-	"github.com/nolafw/faker/pkg/faker/provider"
+	"github.com/ensoria/faker/pkg/faker/common/util"
+	"github.com/ensoria/faker/pkg/faker/core"
+	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
 type Lorem struct {

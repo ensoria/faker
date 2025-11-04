@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/nolafw/faker/pkg/faker/core"
-	"github.com/nolafw/faker/pkg/faker/provider"
+	"github.com/ensoria/faker/pkg/faker/core"
+	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
 type File struct {

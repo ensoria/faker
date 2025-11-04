@@ -9,7 +9,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/nolafw/faker/pkg/faker/common/log"
+	"github.com/ensoria/faker/pkg/faker/common/log"
 )
 
 // []string, []intなどの配列を[]anyに変換する

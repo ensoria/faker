@@ -4,9 +4,9 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/nolafw/faker/pkg/faker/common/util"
-	"github.com/nolafw/faker/pkg/faker/core"
-	"github.com/nolafw/faker/pkg/faker/testutil"
+	"github.com/ensoria/faker/pkg/faker/common/util"
+	"github.com/ensoria/faker/pkg/faker/core"
+	"github.com/ensoria/faker/pkg/faker/testutil"
 )
 
 var _ = Describe("Tests for random bool functions", func() {
