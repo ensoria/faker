@@ -10,6 +10,10 @@ In all other cases, use value types only when the drawbacks of using pointers ou
 
 Please treat primitive values as value types by default.
 
+## Use constants whenever possible.
+
+If a function repeatedly uses fixed strings, numbers, time.Duration, or similar values, define them as constants whenever possible and use those constants within the function.
+The same applies to defining default values.
 
 ## About Backward Compatibility
 
