@@ -444,11 +444,8 @@ f.Person.KanaName() // example: ""
 
 WORKING: まだこれら以外にもメソッドを追加中です。2025年中には一通り完了する予定です。
 
-- Medical
 - Miscellaneous
 - Payment
 - PhoneNumber
 - Text
 - UserAgent
-
-TODO: テストのフレームワークはGingkoに変える予定です

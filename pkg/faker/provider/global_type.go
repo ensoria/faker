@@ -6,6 +6,7 @@ type Global struct {
 	Images    *Images
 	Internets *Internets
 	Lorems    *Lorems
+	Medicals  *Medicals
 	// NOTICE: All fields name should be PLURAL
 }
 
@@ -40,4 +41,9 @@ type Internets struct {
 
 type Lorems struct {
 	Words []string
+}
+
+type Medicals struct {
+	BloodTypes     []string
+	BloodRhFactors []string
 }

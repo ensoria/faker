@@ -9,5 +9,6 @@ func New() *provider.Global {
 		Images:    CreateImages(),
 		Internets: CreateInternets(),
 		Lorems:    CreateLorems(),
+		Medicals:  CreateMedicals(),
 	}
 }

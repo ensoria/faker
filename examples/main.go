@@ -125,6 +125,11 @@ func main() {
 	f.Lorem.ParagraphSlice(5, 5)
 	f.Lorem.Paragraphs(5, 5)
 
+	// medical
+	f.Medical.BloodType()
+	f.Medical.BloodRhFactor()
+	f.Medical.BloodGroup()
+
 	// address
 	f.Address.CitySuffix()
 	f.Address.CityPrefix()
