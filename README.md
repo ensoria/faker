@@ -293,6 +293,10 @@ TODO:
 
 TODO:
 
+### User Agent
+
+TODO:
+
 ### Locale
 
 インスタンス作成時に、渡すロケールによって作成されるデータが変わります。
@@ -452,6 +456,8 @@ f.Person.KanaName() // example: ""
 WORKING: まだこれら以外にもメソッドを追加中です。2026年中には一通り完了する予定です。
 
 - PhoneNumber
+
+NOT INCLUDED:
+
 - Text
-- UserAgent
 - Miscellaneous

@@ -142,6 +142,21 @@ func main() {
 	f.Payment.Iban("DE", "")
 	f.Payment.SwiftBicNumber()
 
+	// user agent
+	f.UserAgent.RandomUserAgent()
+	f.UserAgent.Chrome()
+	f.UserAgent.MsEdge()
+	f.UserAgent.Firefox()
+	f.UserAgent.Safari()
+	f.UserAgent.Opera()
+	f.UserAgent.InternetExplorer()
+	f.UserAgent.WindowsPlatformToken()
+	f.UserAgent.MacPlatformToken()
+	f.UserAgent.IosMobileToken()
+	f.UserAgent.LinuxPlatformToken()
+	f.UserAgent.MacProcessor()
+	f.UserAgent.LinuxProcessor()
+
 	// address
 	f.Address.CitySuffix()
 	f.Address.CityPrefix()

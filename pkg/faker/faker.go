@@ -14,24 +14,26 @@ import (
 	"github.com/ensoria/faker/pkg/faker/generator/medical"
 	"github.com/ensoria/faker/pkg/faker/generator/payment"
 	"github.com/ensoria/faker/pkg/faker/generator/person"
+	"github.com/ensoria/faker/pkg/faker/generator/useragent"
 	"github.com/ensoria/faker/pkg/faker/provider"
 	"github.com/ensoria/faker/pkg/faker/provider/global"
 	"github.com/ensoria/faker/pkg/faker/provider/locale/en_US"
 )
 
 type Faker struct {
-	Rand     *core.Rand
-	Person   *person.Person
-	Color    *color.Color
-	Address  *address.Address
-	Barcode  *barcode.Barcode
-	Company  *company.Company
-	File     *file.File
-	Image    *image.Image
-	Internet *internet.Internet
-	Lorem    *lorem.Lorem
-	Medical  *medical.Medical
-	Payment  *payment.Payment
+	Rand      *core.Rand
+	Person    *person.Person
+	Color     *color.Color
+	Address   *address.Address
+	Barcode   *barcode.Barcode
+	Company   *company.Company
+	File      *file.File
+	Image     *image.Image
+	Internet  *internet.Internet
+	Lorem     *lorem.Lorem
+	Medical   *medical.Medical
+	Payment   *payment.Payment
+	UserAgent *useragent.UserAgent
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
 	// ...et
 
@@ -48,16 +50,18 @@ func CreateWithLocale(localized *provider.Localized) *Faker {
 	coreRand := core.NewRand(util.RandSeed())
 	global := global.New()
 	return &Faker{
-		Rand:     coreRand,
-		Barcode:  barcode.New(coreRand),
-		Color:    color.New(coreRand, global),
-		Person:   person.New(coreRand, localized),
-		Address:  address.New(coreRand, localized),
-		Company:  company.New(coreRand, localized),
-		File:     file.New(coreRand, global),
-		Image:    image.New(coreRand, global),
-		Internet: internet.New(coreRand, global),
-		Lorem:    lorem.New(coreRand, global),
-		Medical:  medical.New(coreRand, global),
+		Rand:      coreRand,
+		Barcode:   barcode.New(coreRand),
+		Color:     color.New(coreRand, global),
+		Person:    person.New(coreRand, localized),
+		Address:   address.New(coreRand, localized),
+		Company:   company.New(coreRand, localized),
+		File:      file.New(coreRand, global),
+		Image:     image.New(coreRand, global),
+		Internet:  internet.New(coreRand, global),
+		Lorem:     lorem.New(coreRand, global),
+		Medical:   medical.New(coreRand, global),
+		Payment:   payment.New(coreRand, global),
+		UserAgent: useragent.New(coreRand, global),
 	}
 }

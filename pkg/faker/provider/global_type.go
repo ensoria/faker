@@ -1,13 +1,14 @@
 package provider
 
 type Global struct {
-	Colors    *Colors
-	Files     *Files
-	Images    *Images
-	Internets *Internets
-	Lorems    *Lorems
-	Medicals  *Medicals
-	Payments  *Payments
+	Colors     *Colors
+	Files      *Files
+	Images     *Images
+	Internets  *Internets
+	Lorems     *Lorems
+	Medicals   *Medicals
+	Payments   *Payments
+	UserAgents *UserAgents
 	// NOTICE: All fields name should be PLURAL
 }
 
@@ -53,4 +54,12 @@ type Payments struct {
 	CardVendors []string
 	CardParams  map[string][]string
 	IbanFormats map[string][][2]any // each element is [charClass(string), count(int)]
+}
+
+type UserAgents struct {
+	BrowserNames          []string
+	WindowsPlatformTokens []string
+	LinuxProcessors       []string
+	MacProcessors         []string
+	Languages             []string
 }
