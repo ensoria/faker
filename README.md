@@ -3,7 +3,7 @@
 fakerは、ランダムなダミーデータを作成するためのライブラリです。
 テストのためなどに、適当なダミーデータを簡単に作成することができます。
 
-このライブラリはPHPの[Faker](https://github.com/fzaninotto/Faker)を、修正と変更を加え、Goへ移植したものになります。
+このライブラリはPHPの[Faker](https://github.com/FakerPHP/Faker)を、修正と変更を加え、Goへ移植したものになります。
 
 ## Requirements
 
