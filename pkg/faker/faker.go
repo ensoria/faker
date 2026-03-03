@@ -12,6 +12,7 @@ import (
 	"github.com/ensoria/faker/pkg/faker/generator/internet"
 	"github.com/ensoria/faker/pkg/faker/generator/lorem"
 	"github.com/ensoria/faker/pkg/faker/generator/medical"
+	"github.com/ensoria/faker/pkg/faker/generator/payment"
 	"github.com/ensoria/faker/pkg/faker/generator/person"
 	"github.com/ensoria/faker/pkg/faker/provider"
 	"github.com/ensoria/faker/pkg/faker/provider/global"
@@ -30,6 +31,7 @@ type Faker struct {
 	Internet *internet.Internet
 	Lorem    *lorem.Lorem
 	Medical  *medical.Medical
+	Payment  *payment.Payment
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
 	// ...et
 

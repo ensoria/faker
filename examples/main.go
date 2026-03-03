@@ -130,6 +130,18 @@ func main() {
 	f.Medical.BloodRhFactor()
 	f.Medical.BloodGroup()
 
+	// payment
+	f.Payment.CreditCardType()
+	f.Payment.CreditCardNumber("")
+	f.Payment.CreditCardNumber("Visa")
+	f.Payment.CreditCardNumberFormatted("Visa", "-")
+	f.Payment.CreditCardExpirationDate(true)
+	f.Payment.CreditCardExpirationDateString(true, "")
+	f.Payment.CreditCardDetailsResult(true, f.Person.Name())
+	f.Payment.Iban("", "")
+	f.Payment.Iban("DE", "")
+	f.Payment.SwiftBicNumber()
+
 	// address
 	f.Address.CitySuffix()
 	f.Address.CityPrefix()

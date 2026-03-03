@@ -285,6 +285,13 @@ f.Lorem.Paragraphs(5, 5) // example:
 
 ```
 
+### Medical
+
+TODO:
+
+### Payment
+
+TODO:
 
 ### Locale
 
@@ -442,10 +449,9 @@ f.Person.KanaName() // example: ""
 
 ---
 
-WORKING: まだこれら以外にもメソッドを追加中です。2025年中には一通り完了する予定です。
+WORKING: まだこれら以外にもメソッドを追加中です。2026年中には一通り完了する予定です。
 
-- Miscellaneous
-- Payment
 - PhoneNumber
 - Text
 - UserAgent
+- Miscellaneous

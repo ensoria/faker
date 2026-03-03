@@ -7,6 +7,7 @@ type Global struct {
 	Internets *Internets
 	Lorems    *Lorems
 	Medicals  *Medicals
+	Payments  *Payments
 	// NOTICE: All fields name should be PLURAL
 }
 
@@ -46,4 +47,10 @@ type Lorems struct {
 type Medicals struct {
 	BloodTypes     []string
 	BloodRhFactors []string
+}
+
+type Payments struct {
+	CardVendors []string
+	CardParams  map[string][]string
+	IbanFormats map[string][][2]any // each element is [charClass(string), count(int)]
 }
