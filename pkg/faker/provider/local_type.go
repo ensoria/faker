@@ -1,9 +1,10 @@
 package provider
 
 type Localized struct {
-	People    *People
-	Addresses *Addresses
-	Companies *Companies
+	People       *People
+	Addresses    *Addresses
+	Companies    *Companies
+	PhoneNumbers *PhoneNumbers
 
 	// NOTICE: All fields name should be PLURAL
 }

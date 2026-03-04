@@ -14,6 +14,7 @@ import (
 	"github.com/ensoria/faker/pkg/faker/generator/medical"
 	"github.com/ensoria/faker/pkg/faker/generator/payment"
 	"github.com/ensoria/faker/pkg/faker/generator/person"
+	"github.com/ensoria/faker/pkg/faker/generator/phonenumber"
 	"github.com/ensoria/faker/pkg/faker/generator/useragent"
 	"github.com/ensoria/faker/pkg/faker/provider"
 	"github.com/ensoria/faker/pkg/faker/provider/global"
@@ -32,8 +33,9 @@ type Faker struct {
 	Internet  *internet.Internet
 	Lorem     *lorem.Lorem
 	Medical   *medical.Medical
-	Payment   *payment.Payment
-	UserAgent *useragent.UserAgent
+	Payment     *payment.Payment
+	PhoneNumber *phonenumber.PhoneNumber
+	UserAgent   *useragent.UserAgent
 	// TODO: Faker/Factoryの $defaultProvidersの変数にあるものをここに入れる
 	// ...et
 
@@ -61,7 +63,8 @@ func CreateWithLocale(localized *provider.Localized) *Faker {
 		Internet:  internet.New(coreRand, global),
 		Lorem:     lorem.New(coreRand, global),
 		Medical:   medical.New(coreRand, global),
-		Payment:   payment.New(coreRand, global),
-		UserAgent: useragent.New(coreRand, global),
+		Payment:     payment.New(coreRand, global),
+		PhoneNumber: phonenumber.New(coreRand, global, localized),
+		UserAgent:   useragent.New(coreRand, global),
 	}
 }

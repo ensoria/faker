@@ -293,6 +293,10 @@ TODO:
 
 TODO:
 
+### Phone Number
+
+TODO:
+
 ### User Agent
 
 TODO:
@@ -449,15 +453,3 @@ f.Person.KanaName() // example: ""
 // example ja_Jp: "イダカ サトミ"
 
 ```
-
-
----
-
-WORKING: まだこれら以外にもメソッドを追加中です。2026年中には一通り完了する予定です。
-
-- PhoneNumber
-
-NOT INCLUDED:
-
-- Text
-- Miscellaneous

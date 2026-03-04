@@ -142,6 +142,11 @@ func main() {
 	f.Payment.Iban("DE", "")
 	f.Payment.SwiftBicNumber()
 
+	// phone number
+	f.PhoneNumber.PhoneNumber()
+	f.PhoneNumber.E164PhoneNumber()
+	f.PhoneNumber.IMEI()
+
 	// user agent
 	f.UserAgent.RandomUserAgent()
 	f.UserAgent.Chrome()

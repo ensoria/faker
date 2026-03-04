@@ -1,14 +1,15 @@
 package provider
 
 type Global struct {
-	Colors     *Colors
-	Files      *Files
-	Images     *Images
-	Internets  *Internets
-	Lorems     *Lorems
-	Medicals   *Medicals
-	Payments   *Payments
-	UserAgents *UserAgents
+	Colors       *Colors
+	Files        *Files
+	Images       *Images
+	Internets    *Internets
+	Lorems       *Lorems
+	Medicals     *Medicals
+	Payments     *Payments
+	PhoneNumbers *PhoneNumbers
+	UserAgents   *UserAgents
 	// NOTICE: All fields name should be PLURAL
 }
 
@@ -54,6 +55,13 @@ type Payments struct {
 	CardVendors []string
 	CardParams  map[string][]string
 	IbanFormats map[string][][2]any // each element is [charClass(string), count(int)]
+}
+
+// PhoneNumbers holds phone number format data.
+// Used by both Global (E164Formats) and Localized (Formats).
+type PhoneNumbers struct {
+	Formats     []string // locale-specific phone number formats
+	E164Formats []string // E.164 international phone number formats
 }
 
 type UserAgents struct {
