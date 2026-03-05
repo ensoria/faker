@@ -14,8 +14,8 @@ func CreatePeople() *provider.People {
 		LastKanaNames:        LastKanaNames,
 		MaleNameFormats:      NameFormats,
 		FemaleNameFormats:    NameFormats,
-		CreateNameMale:       createJaJpNameMale,
-		CreateNameFemale:     createJaJpNameFemale,
+		CreateNameMale:       createJaJPNameMale,
+		CreateNameFemale:     createJaJPNameFemale,
 		CreateKanaNameMale:   createKanaNameMale,
 		CreateKanaNameFemale: createKanaNameFemale,
 	}
@@ -70,7 +70,7 @@ var NameFormats = []string{
 	"{{.LastName}} {{.FirstName}}",
 }
 
-type JaJpPersonName struct {
+type JaJPPersonName struct {
 	FirstName string
 	LastName  string
 }
@@ -84,17 +84,17 @@ type NameGenerator interface {
 	LastKanaName() string
 }
 
-func createJaJpNameMale(p any) any {
+func createJaJPNameMale(p any) any {
 	a := p.(NameGenerator)
-	return &JaJpPersonName{
+	return &JaJPPersonName{
 		FirstName: a.FirstNameMale(),
 		LastName:  a.LastName(),
 	}
 }
 
-func createJaJpNameFemale(p any) any {
+func createJaJPNameFemale(p any) any {
 	a := p.(NameGenerator)
-	return &JaJpPersonName{
+	return &JaJPPersonName{
 		FirstName: a.FirstNameFemale(),
 		LastName:  a.LastName(),
 	}
@@ -102,7 +102,7 @@ func createJaJpNameFemale(p any) any {
 
 func createKanaNameMale(p any) any {
 	a := p.(NameGenerator)
-	return &JaJpPersonName{
+	return &JaJPPersonName{
 		FirstName: a.FirstKanaNameMale(),
 		LastName:  a.LastKanaName(),
 	}
@@ -110,7 +110,7 @@ func createKanaNameMale(p any) any {
 
 func createKanaNameFemale(p any) any {
 	a := p.(NameGenerator)
-	return &JaJpPersonName{
+	return &JaJPPersonName{
 		FirstName: a.FirstKanaNameFemale(),
 		LastName:  a.LastKanaName(),
 	}

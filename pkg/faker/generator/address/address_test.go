@@ -151,70 +151,70 @@ var _ = Describe("Address", func() {
 		})
 	})
 
-	localizedJaJp := ja_JP.New()
-	addressJaJp := address.New(coreRand, localizedJaJp)
+	localizedJaJP := ja_JP.New()
+	addressJaJP := address.New(coreRand, localizedJaJP)
 
 	Describe("Prefecture", func() {
 		It("should return a prefecture", func() {
-			r := addressJaJp.Prefecture()
+			r := addressJaJP.Prefecture()
 			Expect(r).To(BeElementOf(ja_JP.Prefectures))
 		})
 	})
 
 	Describe("Ward", func() {
 		It("WardSuffix should return a ward suffix", func() {
-			r := addressJaJp.WardSuffix()
+			r := addressJaJP.WardSuffix()
 			Expect(r).To(BeElementOf(ja_JP.WardSuffixes))
 		})
 
 		It("WardName should return a ward name", func() {
-			r := addressJaJp.WardName()
+			r := addressJaJP.WardName()
 			Expect(r).To(BeElementOf(ja_JP.WardNames))
 		})
 
 		It("Ward should return a ward", func() {
-			r := addressJaJp.Ward()
+			r := addressJaJP.Ward()
 			testutil.Output("Address.Ward", r)
 		})
 	})
 
 	Describe("Area", func() {
 		It("AreaNumber should return an area number", func() {
-			r := addressJaJp.AreaNumber()
+			r := addressJaJP.AreaNumber()
 			testutil.Output("Address.AreaNumber", r)
 		})
 
 		It("AreaName should return an area name", func() {
-			r := addressJaJp.AreaName()
+			r := addressJaJP.AreaName()
 			Expect(r).To(BeElementOf(ja_JP.AreaNames))
 		})
 
 		It("Area should return an area", func() {
-			r := addressJaJp.Area()
+			r := addressJaJP.Area()
 			testutil.Output("Address.Area", r)
 		})
 	})
 
 	Describe("SecondaryAddress for ja_JP", func() {
 		It("BuildingName should return a building name", func() {
-			r := addressJaJp.BuildingName()
+			r := addressJaJP.BuildingName()
 			Expect(r).To(BeElementOf(ja_JP.BuildingNames))
 		})
 
 		It("RoomNumber should return a room number", func() {
-			r := addressJaJp.RoomNumber()
+			r := addressJaJP.RoomNumber()
 			testutil.Output("Address.RoomNumber", r)
 		})
 
 		It("SecondaryAddress for ja_JP should return a secondary address", func() {
-			r := addressJaJp.SecondaryAddress()
+			r := addressJaJP.SecondaryAddress()
 			testutil.Output("Address.SecondaryAddress", r)
 		})
 	})
 
 	Describe("Address for ja_JP", func() {
 		It("should return an address", func() {
-			r := addressJaJp.Address()
+			r := addressJaJP.Address()
 			testutil.Output("Address.Address", r)
 		})
 	})

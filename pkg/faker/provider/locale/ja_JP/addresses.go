@@ -20,11 +20,11 @@ func CreateAddresses() *provider.Addresses {
 		AreaFormats:             AreaFormats,
 		SecondaryAddressFormats: SecondaryAddressFormats,
 		AddressFormats:          AddressFormats,
-		CreateWard:              CreateJaJpWard,
-		CreateArea:              CreateJaJpArea,
-		CreateSecondaryAddress:  CreateJaJpSecondaryAddress,
-		CreateAddress:           CreateJaJpAddress,
-		CreateCity:              CreateJaJpCity,
+		CreateWard:              CreateJaJPWard,
+		CreateArea:              CreateJaJPArea,
+		CreateSecondaryAddress:  CreateJaJPSecondaryAddress,
+		CreateAddress:           CreateJaJPAddress,
+		CreateCity:              CreateJaJPCity,
 	}
 }
 
@@ -112,7 +112,7 @@ type CityGenerator interface {
 	CitySuffix() string
 }
 
-func CreateJaJpCity(a any) any {
+func CreateJaJPCity(a any) any {
 	return &City{
 		CityName:   a.(CityGenerator).CityName(),
 		CitySuffix: a.(CityGenerator).CitySuffix(),
@@ -135,7 +135,7 @@ type WardGenerator interface {
 	WardSuffix() string
 }
 
-func CreateJaJpWard(a any) any {
+func CreateJaJPWard(a any) any {
 	g := a.(WardGenerator)
 	return &Ward{
 		WardName:   g.WardName(),
@@ -186,7 +186,7 @@ type AreaGenerator interface {
 	AreaNumber() string
 }
 
-func CreateJaJpArea(a any) any {
+func CreateJaJPArea(a any) any {
 	g := a.(AreaGenerator)
 	return &Area{
 		AreaName:   g.AreaName(),
@@ -217,7 +217,7 @@ type SecondaryAddressGenerator interface {
 	RoomNumber() string
 }
 
-func CreateJaJpSecondaryAddress(a any) any {
+func CreateJaJPSecondaryAddress(a any) any {
 	g := a.(SecondaryAddressGenerator)
 	return &SecondaryAddress{
 		BuildingName: g.BuildingName(),
@@ -251,7 +251,7 @@ type AddressGenerator interface {
 	SecondaryAddress() string
 }
 
-func CreateJaJpAddress(a any) any {
+func CreateJaJPAddress(a any) any {
 	g := a.(AddressGenerator)
 	return &Address{
 		Postcode:         g.Postcode(),

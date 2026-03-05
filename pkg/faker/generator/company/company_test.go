@@ -58,16 +58,16 @@ var _ = Describe("Company", func() {
 		})
 	})
 
-	jaJp := ja_JP.New()
-	compJaJp := company.New(coreRand, jaJp)
+	jaJP := ja_JP.New()
+	compJaJP := company.New(coreRand, jaJP)
 	Describe("ja_JP Company", func() {
 		It("CompanyPrefix should return a company prefix", func() {
-			r := compJaJp.CompanyPrefix()
+			r := compJaJP.CompanyPrefix()
 			Expect(r).To(BeElementOf(ja_JP.CompanyPrefixes))
 		})
 
 		It("Name should return a company name", func() {
-			r := compJaJp.Name()
+			r := compJaJP.Name()
 			testutil.Output("Company.Name", r)
 		})
 	})

@@ -109,25 +109,25 @@ var _ = Describe("Person", func() {
 		})
 	})
 
-	jaJp := ja_JP.New()
-	pJaJp := person.New(coreRand, jaJp)
+	jaJP := ja_JP.New()
+	pJaJP := person.New(coreRand, jaJP)
 	Describe("FirstKanaNameMale", func() {
 		It("should return a male first kana name", func() {
-			r := pJaJp.FirstKanaNameMale()
+			r := pJaJP.FirstKanaNameMale()
 			Expect(r).To(BeElementOf(ja_JP.FirstKanaNameMales))
 		})
 	})
 
 	Describe("FirstKanaNameFemale", func() {
 		It("should return a female first kana name", func() {
-			r := pJaJp.FirstKanaNameFemale()
+			r := pJaJP.FirstKanaNameFemale()
 			Expect(r).To(BeElementOf(ja_JP.FirstKanaNameFemales))
 		})
 	})
 
 	Describe("FirstKanaName", func() {
 		It("should return a first kana name", func() {
-			r := pJaJp.FirstKanaName()
+			r := pJaJP.FirstKanaName()
 			Expect(len(r)).To(BeNumerically(">", 0))
 			testutil.Output("Person.FirstKanaName", r)
 		})
@@ -135,14 +135,14 @@ var _ = Describe("Person", func() {
 
 	Describe("LastKanaName", func() {
 		It("should return a last kana name", func() {
-			r := pJaJp.LastKanaName()
+			r := pJaJP.LastKanaName()
 			Expect(r).To(BeElementOf(ja_JP.LastKanaNames))
 		})
 	})
 
 	Describe("MaleKanaName", func() {
 		It("should return a male kana name", func() {
-			r := pJaJp.MaleKanaName()
+			r := pJaJP.MaleKanaName()
 			Expect(len(r)).To(BeNumerically(">", 0))
 			testutil.Output("Person.MaleKanaName", r)
 		})
@@ -150,7 +150,7 @@ var _ = Describe("Person", func() {
 
 	Describe("FemaleKanaName", func() {
 		It("should return a female kana name", func() {
-			r := pJaJp.FemaleKanaName()
+			r := pJaJP.FemaleKanaName()
 			Expect(len(r)).To(BeNumerically(">", 0))
 			testutil.Output("Person.FemaleKanaName", r)
 		})
@@ -158,7 +158,7 @@ var _ = Describe("Person", func() {
 
 	Describe("KanaName", func() {
 		It("should return a kana name", func() {
-			r := pJaJp.KanaName()
+			r := pJaJP.KanaName()
 			Expect(len(r)).To(BeNumerically(">", 0))
 			testutil.Output("Person.KanaName", r)
 		})

@@ -8,7 +8,7 @@ func CreateCompanies() *provider.Companies {
 		CompanyPrefixes: CompanyPrefixes,
 		CompanySuffixes: CompanySuffixes,
 		CompanyFormats:  CompanyFormats,
-		CreateCompany:   CreateJaJpCompany,
+		CreateCompany:   CreateJaJPCompany,
 	}
 }
 
@@ -21,21 +21,21 @@ var CompanyFormats = []string{
 	"{{.CompanyName}} {{.CompanySuffix}}",
 }
 
-type JaJpCompany struct {
+type JaJPCompany struct {
 	CompanyName   string
 	CompanyPrefix string
 	CompanySuffix string
 }
 
-type JaJpCompanyGenerator interface {
+type JaJPCompanyGenerator interface {
 	CompanyName() string
 	CompanySuffix() string
 	CompanyPrefix() string
 }
 
-func CreateJaJpCompany(c any) any {
-	g := c.(JaJpCompanyGenerator)
-	return &JaJpCompany{
+func CreateJaJPCompany(c any) any {
+	g := c.(JaJPCompanyGenerator)
+	return &JaJPCompany{
 		CompanyName:   g.CompanyName(),
 		CompanyPrefix: g.CompanyPrefix(),
 		CompanySuffix: g.CompanySuffix(),
