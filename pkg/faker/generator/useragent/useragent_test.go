@@ -40,15 +40,15 @@ var _ = Describe("UserAgent", func() {
 		})
 	})
 
-	Describe("MsEdge", func() {
+	Describe("MSEdge", func() {
 		It("should return an Edge user agent string", func() {
-			r := ua.MsEdge()
+			r := ua.MSEdge()
 			Expect(r).To(HavePrefix("Mozilla/5.0 "))
 			Expect(r).To(ContainSubstring("AppleWebKit/"))
 			Expect(r).To(ContainSubstring("Chrome/"))
 			hasEdg := strings.Contains(r, "Edg/") || strings.Contains(r, "EdgA/") || strings.Contains(r, "EdgiOS/")
 			Expect(hasEdg).To(BeTrue())
-			testutil.Output("UserAgent.MsEdge", r)
+			testutil.Output("UserAgent.MSEdge", r)
 		})
 	})
 
@@ -105,11 +105,11 @@ var _ = Describe("UserAgent", func() {
 			testutil.Output("UserAgent.MacPlatformToken", r)
 		})
 
-		It("IosMobileToken should return an iOS token", func() {
-			r := ua.IosMobileToken()
+		It("IOSMobileToken should return an iOS token", func() {
+			r := ua.IOSMobileToken()
 			Expect(r).To(HavePrefix("iPhone; CPU iPhone OS"))
 			Expect(r).To(ContainSubstring("like Mac OS X"))
-			testutil.Output("UserAgent.IosMobileToken", r)
+			testutil.Output("UserAgent.IOSMobileToken", r)
 		})
 
 		It("LinuxPlatformToken should return a Linux token", func() {

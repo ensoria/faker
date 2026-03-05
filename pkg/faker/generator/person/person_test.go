@@ -102,9 +102,9 @@ var _ = Describe("Person", func() {
 		})
 	})
 
-	Describe("Ssn", func() {
+	Describe("SSN", func() {
 		It("should return a person's SSN", func() {
-			r := p.Ssn()
+			r := p.SSN()
 			Expect(r).To(MatchRegexp(`^\d{3}-\d{2}-\d{4}$`))
 		})
 	})

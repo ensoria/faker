@@ -429,7 +429,7 @@ f.Person.FemaleName() // example: "Esther Rosenbaum"
 f.Person.Name() // example: "Gregory Braun III"
 // example ja_Jp: "佐藤 智也"
 
-f.Person.Ssn() // example: "733-20-4400"
+f.Person.SSN() // example: "733-20-4400"
 
 f.Person.FirstKanaNameMale() // example: ""
 // example ja_Jp: "タクマ"

@@ -127,7 +127,7 @@ func (p *Person) Name() string {
 	return p.FemaleName()
 }
 
-func (p *Person) Ssn() string {
+func (p *Person) SSN() string {
 	return p.rand.Str.AlphaDigitsLike("###-##-####")
 }
 

@@ -41,7 +41,7 @@ func (u *UserAgent) RandomUserAgent() string {
 	case "safari":
 		return u.Safari()
 	case "msedge":
-		return u.MsEdge()
+		return u.MSEdge()
 	default:
 		return u.Chrome()
 	}
@@ -62,9 +62,9 @@ func (u *UserAgent) Chrome() string {
 	return mozillaPrefix + u.rand.Slice.StrElem(platforms)
 }
 
-// MsEdge returns a Microsoft Edge user agent string.
+// MSEdge returns a Microsoft Edge user agent string.
 // Example: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36 Edg/99.0.1150.36"
-func (u *UserAgent) MsEdge() string {
+func (u *UserAgent) MSEdge() string {
 	saf := fmt.Sprintf("%d.%d", u.rand.Num.IntBt(531, 537), u.rand.Num.IntBt(0, 2))
 	chrv := fmt.Sprintf("%d.0", u.rand.Num.IntBt(79, 99))
 	chromeBuild := fmt.Sprintf(".%d.%d", u.rand.Num.IntBt(4000, 4844), u.rand.Num.IntBt(10, 99))
@@ -74,7 +74,7 @@ func (u *UserAgent) MsEdge() string {
 		fmt.Sprintf("(%s) AppleWebKit/%s (KHTML, like Gecko) Chrome/%s%s Safari/%s Edg/%s%s", u.WindowsPlatformToken(), saf, chrv, chromeBuild, saf, chrv, edgeBuild),
 		fmt.Sprintf("(%s) AppleWebKit/%s (KHTML, like Gecko) Chrome/%s%s Safari/%s Edg/%s%s", u.MacPlatformToken(), saf, chrv, chromeBuild, saf, chrv, edgeBuild),
 		fmt.Sprintf("(%s) AppleWebKit/%s (KHTML, like Gecko) Chrome/%s%s Safari/%s EdgA/%s%s", u.LinuxPlatformToken(), saf, chrv, chromeBuild, saf, chrv, edgeBuild),
-		fmt.Sprintf("(%s) AppleWebKit/%s (KHTML, like Gecko) Version/15.0 EdgiOS/%s%s Mobile/15E148 Safari/%s", u.IosMobileToken(), saf, chrv, edgeBuild, saf),
+		fmt.Sprintf("(%s) AppleWebKit/%s (KHTML, like Gecko) Version/15.0 EdgiOS/%s%s Mobile/15E148 Safari/%s", u.IOSMobileToken(), saf, chrv, edgeBuild, saf),
 	}
 
 	return mozillaPrefix + u.rand.Slice.StrElem(platforms)
@@ -165,9 +165,9 @@ func (u *UserAgent) MacPlatformToken() string {
 		u.rand.Slice.StrElem(u.data.MacProcessors), u.rand.Num.IntBt(5, 8), u.rand.Num.IntBt(0, 9))
 }
 
-// IosMobileToken returns a random iOS mobile platform token.
+// IOSMobileToken returns a random iOS mobile platform token.
 // Example: "iPhone; CPU iPhone OS 14_1 like Mac OS X"
-func (u *UserAgent) IosMobileToken() string {
+func (u *UserAgent) IOSMobileToken() string {
 	return fmt.Sprintf("iPhone; CPU iPhone OS %d_%d like Mac OS X",
 		u.rand.Num.IntBt(13, 15), u.rand.Num.IntBt(0, 2))
 }
