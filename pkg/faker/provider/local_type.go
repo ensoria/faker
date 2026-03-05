@@ -81,5 +81,5 @@ type Companies struct {
 	JobTitleFormats []string
 	CreateJobTitle  func(any) any
 	// EIN
-	EinPrefixes []string
+	EINPrefixes []string
 }

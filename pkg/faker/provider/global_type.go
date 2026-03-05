@@ -19,10 +19,10 @@ type Colors struct {
 }
 
 type Files struct {
-	// REFACTOR: MimeTypes should be `MimeTypesAndExtensions`?
-	// MimeTypes type should be map[string][]string
+	// REFACTOR: MIMETypes should be `MIMETypesAndExtensions`?
+	// MIMETypes type should be map[string][]string
 	// because of type restriction, it is set as map[any][]any
-	MimeTypes map[any][]any
+	MIMETypes map[any][]any
 }
 
 type Images struct{}

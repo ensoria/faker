@@ -48,12 +48,12 @@ var _ = Describe("Company", func() {
 	})
 
 	Describe("EIN", func() {
-		It("EinPrefix should return a EIN prefix", func() {
-			r := comp.EinPrefix()
-			Expect(r).To(BeElementOf(en_US.EinPrefixes))
+		It("EINPrefix should return a EIN prefix", func() {
+			r := comp.EINPrefix()
+			Expect(r).To(BeElementOf(en_US.EINPrefixes))
 		})
-		It("Ein should return a EIN", func() {
-			r := comp.Ein()
+		It("EIN should return a EIN", func() {
+			r := comp.EIN()
 			Expect(r).To(MatchRegexp(`\d{2}-\d{7}`))
 		})
 	})

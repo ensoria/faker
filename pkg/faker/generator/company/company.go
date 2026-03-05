@@ -77,19 +77,19 @@ func (c *Company) JobTitle() string {
 	return util.RenderTemplate(format, nameData)
 }
 
-func (c *Company) EinPrefix() string {
-	if len(c.data.EinPrefixes) == 0 {
+func (c *Company) EINPrefix() string {
+	if len(c.data.EINPrefixes) == 0 {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	return c.rand.Slice.StrElem(c.data.EinPrefixes)
+	return c.rand.Slice.StrElem(c.data.EINPrefixes)
 }
 
 // Employer Identification Number (EIN)
 // See: https://en.wikipedia.org/wiki/Employer_Identification_Number
 // example: "12-3456789"
-func (c *Company) Ein() string {
-	prefix := c.EinPrefix()
+func (c *Company) EIN() string {
+	prefix := c.EINPrefix()
 	suffixNum := c.rand.Num.Int64Bt(0, 9999999)
 	return prefix + "-" + fmt.Sprintf("%07d", suffixNum)
 }

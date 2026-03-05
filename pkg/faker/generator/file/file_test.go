@@ -23,9 +23,9 @@ var _ = Describe("File", Ordered, func() {
 	f := file.New(coreRand, global)
 
 	Describe("File", func() {
-		It("MimeType should return a string", func() {
-			mimeType := f.MimeType()
-			_, exists := global.Files.MimeTypes[mimeType]
+		It("MIMEType should return a string", func() {
+			mimeType := f.MIMEType()
+			_, exists := global.Files.MIMETypes[mimeType]
 			Expect(exists).To(BeTrue())
 		})
 

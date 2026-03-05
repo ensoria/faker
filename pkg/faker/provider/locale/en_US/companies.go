@@ -11,7 +11,7 @@ func CreateCompanies() *provider.Companies {
 		JobTitleNames:   JobTitleNames,
 		JobTitleFormats: JobTitleFormats,
 		CreateJobTitle:  CreateEnUsJobTitle,
-		EinPrefixes:     EinPrefixes,
+		EINPrefixes:     EINPrefixes,
 	}
 }
 
@@ -96,7 +96,7 @@ func CreateEnUsJobTitle(c any) any {
 }
 
 // See https://www.irs.gov/businesses/small-businesses-self-employed/how-eins-are-assigned-and-valid-ein-prefixes
-var EinPrefixes = []string{
+var EINPrefixes = []string{
 	"01", "02", "03", "04", "05", "06",
 	"10", "11", "12", "13", "14", "15", "16",
 	"20", "21", "22", "23", "24", "25", "26", "27",

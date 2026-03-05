@@ -88,7 +88,7 @@ func main() {
 	f.Color.HSLAsArr()
 
 	//  file
-	f.File.MimeType()
+	f.File.MIMEType()
 	f.File.Extension()
 
 	// destDir := "./tmp"
@@ -200,8 +200,8 @@ func main() {
 	f.Company.Name()
 	f.Company.JobTitleName()
 	f.Company.JobTitle()
-	f.Company.EinPrefix()
-	f.Company.Ein()
+	f.Company.EINPrefix()
+	f.Company.EIN()
 
 	// person
 	f.Person.FirstNameMale()

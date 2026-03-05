@@ -197,7 +197,7 @@ f.Color.HSLAsArr() // example: [31 69 46]
 ### File
 
 ```go
-f.File.MimeType() // example: "application/widget"
+f.File.MIMEType() // example: "application/widget"
 
 f.File.Extension() // example: "tga"
 
@@ -390,9 +390,9 @@ f.Company.JobTitleName() // example: "Telecommunications Equipment Installer"
 
 f.Company.JobTitle() // example: "Airframe Mechanic"
 
-f.Company.EinPrefix() // example: "54"
+f.Company.EINPrefix() // example: "54"
 
-f.Company.Ein() // example: "52-9635645"
+f.Company.EIN() // example: "52-9635645"
 
 ```
 

@@ -32,7 +32,7 @@ var _ = Describe("Faker", func() {
 			f.Rand.Slice.IntElem([]int{1, 2, 3})
 			f.Barcode.EAN13()
 			f.Color.Hex()
-			f.File.MimeType()
+			f.File.MIMEType()
 			f.Image.Binary(100, 100, "jpg")
 			f.Internet.FirstName()
 			f.Lorem.Word()

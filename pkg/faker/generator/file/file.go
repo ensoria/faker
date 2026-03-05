@@ -21,13 +21,13 @@ func New(rand *core.Rand, global *provider.Global) *File {
 	}
 }
 
-func (f *File) MimeType() string {
-	m, _ := f.rand.Map.KeySliceValue(f.data.MimeTypes)
+func (f *File) MIMEType() string {
+	m, _ := f.rand.Map.KeySliceValue(f.data.MIMETypes)
 	return m.(string)
 }
 
 func (f *File) Extension() string {
-	_, e := f.rand.Map.KeySliceValue(f.data.MimeTypes)
+	_, e := f.rand.Map.KeySliceValue(f.data.MIMETypes)
 	extensions := e.([]any)
 	// compare to mime types slice, extension slices are usually very small.
 	// it should not be any performance issue.

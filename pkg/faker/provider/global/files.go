@@ -4,7 +4,7 @@ import "github.com/ensoria/faker/pkg/faker/provider"
 
 func CreateFiles() *provider.Files {
 	return &provider.Files{
-		MimeTypes: MimeTypes,
+		MIMETypes: MIMETypes,
 	}
 }
 
@@ -13,7 +13,7 @@ func CreateFiles() *provider.Files {
 //
 // MIME types from the apache.org file. Some types are truncated.
 // See http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
-var MimeTypes = map[any][]any{
+var MIMETypes = map[any][]any{
 	"application/atom+xml":     {"atom"},
 	"application/ecmascript":   {"ecma"},
 	"application/emma+xml":     {"emma"},
