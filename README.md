@@ -231,7 +231,7 @@ f.Internet.UserName() // example: ayla.prosacco
 
 f.Internet.DomainWord() // example: klein
 
-f.Internet.Tld() // example: com
+f.Internet.TLD() // example: com
 
 f.Internet.DomainName() // example: gutkowski.info
 
@@ -239,13 +239,13 @@ f.Internet.Email() // example: charity.ziemann@mertz.net
 
 f.Internet.Password() // example: 9AYD57IF580tD76p55y
 
-f.Internet.Ipv4() // example: 190.238.68.2
+f.Internet.IPv4() // example: 190.238.68.2
 
-f.Internet.Ipv6() // example: 112a:792e:884c:99e5:d7a0:2b2c:df2b:9c48
+f.Internet.IPv6() // example: 112a:792e:884c:99e5:d7a0:2b2c:df2b:9c48
 
-f.Internet.LocalIpv4() // example: 172.27.204.249
+f.Internet.LocalIPv4() // example: 172.27.204.249
 
-f.Internet.MacAddress() // example: 01:ED:77:9F:1C:E1
+f.Internet.MACAddress() // example: 01:ED:77:9F:1C:E1
 
 
 ```

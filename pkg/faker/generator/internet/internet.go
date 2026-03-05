@@ -48,13 +48,13 @@ func (i *Internet) DomainWord() string {
 	return word
 }
 
-func (i *Internet) Tld() string {
-	return i.rand.Slice.StrElem(i.data.Tld)
+func (i *Internet) TLD() string {
+	return i.rand.Slice.StrElem(i.data.TLD)
 }
 
 // example: "howell.com"
 func (i *Internet) DomainName() string {
-	return i.DomainWord() + "." + i.Tld()
+	return i.DomainWord() + "." + i.TLD()
 }
 
 // example: "jude.borer@oberbrunner.com"
@@ -80,12 +80,12 @@ func (i *Internet) Slug() string {
 }
 
 // TODO: Slugが必要なので、Loremができてから戻って来る
-func (i *Internet) Url() string {
+func (i *Internet) URL() string {
 	//
 	return ""
 }
 
-func (i *Internet) Ipv4() net.IP {
+func (i *Internet) IPv4() net.IP {
 	var ipNum int
 	if i.rand.Bool.Evenly() {
 		ipNum = i.rand.Num.IntBt(-2147483648, -2)
@@ -96,7 +96,7 @@ func (i *Internet) Ipv4() net.IP {
 	return long2ip(uint32(ipNum))
 }
 
-func (i *Internet) Ipv6() string {
+func (i *Internet) IPv6() string {
 	var res []string
 
 	for index := 0; index < 8; index++ {
@@ -107,16 +107,16 @@ func (i *Internet) Ipv6() string {
 
 }
 
-func (i *Internet) LocalIpv4() net.IP {
-	lenIpBlocks := len(i.data.LocalIpBlocks)
-	ipBlock := i.data.LocalIpBlocks[i.rand.Num.Intn(lenIpBlocks)]
+func (i *Internet) LocalIPv4() net.IP {
+	lenIPBlocks := len(i.data.LocalIPBlocks)
+	ipBlock := i.data.LocalIPBlocks[i.rand.Num.Intn(lenIPBlocks)]
 	ipBlock0, _ := ip2long(ipBlock[0])
 	ipBlock1, _ := ip2long(ipBlock[1])
 	num := i.rand.Num.Int32Bt(int32(ipBlock0), int32(ipBlock1))
 	return long2ip(uint32(num))
 }
 
-func (i *Internet) MacAddress() string {
+func (i *Internet) MACAddress() string {
 	var mac []string
 
 	for index := 0; index < 6; index++ {

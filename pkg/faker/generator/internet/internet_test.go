@@ -37,10 +37,10 @@ var _ = Describe("Internet", func() {
 			testutil.Output("Internet.DomainWord", r)
 		})
 
-		It("Tld should return a tld", func() {
-			r := inet.Tld()
+		It("TLD should return a tld", func() {
+			r := inet.TLD()
 
-			testutil.Output("Internet.Tld", r)
+			testutil.Output("Internet.TLD", r)
 		})
 
 		It("DomainName should return a domain name", func() {
@@ -65,28 +65,28 @@ var _ = Describe("Internet", func() {
 		Skip("Slug: come back when Lorem is done")
 	})
 
-	It("TODO: Url", func() {
-		Skip("Url: come back when Lorem is done")
+	It("TODO: URL", func() {
+		Skip("URL: come back when Lorem is done")
 	})
 
 	Describe("Network", func() {
-		It("Ipv4 should return a random ipv4 address", func() {
-			r := inet.Ipv4()
+		It("IPv4 should return a random ipv4 address", func() {
+			r := inet.IPv4()
 			Expect(r).To(MatchRegexp(`^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$`))
 		})
 
-		It("LocalIpv4 should return a random local ipv4 address", func() {
-			r := inet.LocalIpv4()
+		It("LocalIPv4 should return a random local ipv4 address", func() {
+			r := inet.LocalIPv4()
 			Expect(r).To(MatchRegexp(`(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)`))
 		})
 
-		It("Ipv6 should return a random ipv6 address", func() {
-			r := inet.Ipv6()
+		It("IPv6 should return a random ipv6 address", func() {
+			r := inet.IPv6()
 			Expect(r).To(MatchRegexp(`^([0-9a-fA-F]{0,4}:){7}[0-9a-fA-F]{0,4}$`))
 		})
 
-		It("MacAddress should return a random mac address", func() {
-			r := inet.MacAddress()
+		It("MACAddress should return a random mac address", func() {
+			r := inet.MACAddress()
 			Expect(r).To(MatchRegexp(`^([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}$`))
 		})
 	})

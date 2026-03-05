@@ -102,14 +102,14 @@ func main() {
 	// internet
 	f.Internet.UserName()
 	f.Internet.DomainWord()
-	f.Internet.Tld()
+	f.Internet.TLD()
 	f.Internet.DomainName()
 	f.Internet.Email()
 	f.Internet.Password()
-	f.Internet.Ipv4()
-	f.Internet.Ipv6()
-	f.Internet.LocalIpv4()
-	f.Internet.MacAddress()
+	f.Internet.IPv4()
+	f.Internet.IPv6()
+	f.Internet.LocalIPv4()
+	f.Internet.MACAddress()
 
 	// lorem
 	f.Lorem.Word()

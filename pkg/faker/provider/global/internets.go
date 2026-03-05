@@ -16,9 +16,9 @@ func CreateInternets() *provider.Internets {
 		EmailFormats: EmailFormats,
 		CreateEmail:  CreateEmail,
 		//
-		Tld:           Tld,
-		UrlFormats:    UrlFormats,
-		LocalIpBlocks: LocalIpBlocks,
+		TLD:           TLD,
+		URLFormats:    URLFormats,
+		LocalIPBlocks: LocalIPBlocks,
 		// TODO: 他のlocaleのデータも見て、globalで必要そうなら追加する
 	}
 }
@@ -54,7 +54,7 @@ func CreateUserName(i any) any {
 }
 
 // TODO: add more
-var Tld = []string{
+var TLD = []string{
 	"com", "biz", "info", "net", "org",
 }
 
@@ -82,7 +82,7 @@ func CreateEmail(i any) any {
 
 // TODO:
 // var Slugs = []string{}
-var UrlFormats = []string{
+var URLFormats = []string{
 	"http://www.{{.DomainName}}/",
 	"http://{{.DomainName}}/",
 	"http://www.{{.DomainName}}/{{.Slug}}",
@@ -95,7 +95,7 @@ var UrlFormats = []string{
 	"https://{{.DomainName}}/{{.Slug}}.html",
 }
 
-var LocalIpBlocks = [][]string{
+var LocalIPBlocks = [][]string{
 	{"10.0.0.0", "10.255.255.255"},
 	{"172.16.0.0", "172.31.255.255"},
 	{"192.168.0.0", "192.168.255.255"},

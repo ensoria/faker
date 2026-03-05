@@ -35,11 +35,11 @@ type Internets struct {
 	CreateUserName  func(any) any
 	// email
 	EmailFormats []string
-	Tld          []string
+	TLD          []string
 	CreateEmail  func(any) any
 	//
-	UrlFormats    []string
-	LocalIpBlocks [][]string
+	URLFormats    []string
+	LocalIPBlocks [][]string
 }
 
 type Lorems struct {
