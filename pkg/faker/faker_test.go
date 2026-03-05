@@ -30,7 +30,7 @@ var _ = Describe("Faker", func() {
 			f.Rand.Time.PastFuture()
 
 			f.Rand.Slice.IntElem([]int{1, 2, 3})
-			f.Barcode.Ean13()
+			f.Barcode.EAN13()
 			f.Color.Hex()
 			f.File.MimeType()
 			f.Image.Binary(100, 100, "jpg")

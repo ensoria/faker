@@ -46,9 +46,9 @@ var _ = Describe("Color", func() {
 		})
 	})
 
-	Describe("RgbAsNum", func() {
+	Describe("RGBAsNum", func() {
 		It("should return random rgb color as numbers", func() {
-			r, g, b := cl.RgbAsNum()
+			r, g, b := cl.RGBAsNum()
 
 			Expect(r).To(BeNumerically(">", -1))
 			Expect(r).To(BeNumerically("<", 256))
@@ -62,16 +62,16 @@ var _ = Describe("Color", func() {
 	regex255 := `([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])`
 	regexAlpha := `([01]?(\.\d+)?)`
 
-	Describe("RgbAsStr", func() {
+	Describe("RGBAsStr", func() {
 		It("should return random rgb color string", func() {
-			r := cl.RgbAsStr()
+			r := cl.RGBAsStr()
 			Expect(r).To(MatchRegexp("^" + regex255 + "," + regex255 + "," + regex255 + "$"))
 		})
 	})
 
-	Describe("RgbAsArr", func() {
+	Describe("RGBAsArr", func() {
 		It("should return random rgb color as array", func() {
-			r := cl.RgbAsArr()
+			r := cl.RGBAsArr()
 
 			Expect(r[0]).To(BeNumerically(">", -1))
 			Expect(r[0]).To(BeNumerically("<", 256))
@@ -82,23 +82,23 @@ var _ = Describe("Color", func() {
 		})
 	})
 
-	Describe("RgbCss", func() {
+	Describe("RGBCSS", func() {
 		It("should return random rgb css color string", func() {
-			r := cl.RgbCss()
+			r := cl.RGBCSS()
 			Expect(r).To(MatchRegexp(`^rgb\(` + regex255 + `,` + regex255 + `,` + regex255 + `\)$`))
 		})
 	})
 
-	Describe("RgbaCss", func() {
+	Describe("RGBACSS", func() {
 		It("should return random rgba css color string", func() {
-			r := cl.RgbaCss()
+			r := cl.RGBACSS()
 			Expect(r).To(MatchRegexp(`^rgba\(` + regex255 + `,` + regex255 + `,` + regex255 + `,` + regexAlpha + `\)$`))
 		})
 	})
 
-	Describe("HslAsNum", func() {
+	Describe("HSLAsNum", func() {
 		It("should return random hsl color as numbers", func() {
-			h, s, l := cl.HslAsNum()
+			h, s, l := cl.HSLAsNum()
 			Expect(h).To(BeNumerically(">", -1))
 			Expect(h).To(BeNumerically("<", 361))
 			Expect(s).To(BeNumerically(">", -1))
@@ -111,16 +111,16 @@ var _ = Describe("Color", func() {
 	regex360 := `(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])`
 	regex100 := `(?:100|[1-9]?[0-9])`
 
-	Describe("HslAsStr", func() {
+	Describe("HSLAsStr", func() {
 		It("should return random hsl color string", func() {
-			r := cl.HslAsStr()
+			r := cl.HSLAsStr()
 			Expect(r).To(MatchRegexp("^" + regex360 + "," + regex100 + "," + regex100 + "$"))
 		})
 	})
 
-	Describe("HslAsArr", func() {
+	Describe("HSLAsArr", func() {
 		It("should return random hsl color as array", func() {
-			r := cl.HslAsArr()
+			r := cl.HSLAsArr()
 			Expect(r[0]).To(BeNumerically(">", -1))
 			Expect(r[0]).To(BeNumerically("<", 361))
 			Expect(r[1]).To(BeNumerically(">", -1))

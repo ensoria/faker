@@ -156,13 +156,13 @@ f.Rand.Map.KeySliceValue(sliceValues) // example: 1, [value11 value12]
 ### Barcode
 
 ```go
-f.Barcode.Ean8() // example: "58594605"
+f.Barcode.EAN8() // example: "58594605"
 
-f.Barcode.Ean13() // example: 5945059001019
+f.Barcode.EAN13() // example: 5945059001019
 
-f.Barcode.Isbn10() // example: 4509472889
+f.Barcode.ISBN10() // example: 4509472889
 
-f.Barcode.Isbn13() // example: 9787672549372
+f.Barcode.ISBN13() // example: 9787672549372
 
 ```
 
@@ -177,21 +177,21 @@ f.Color.Hex() // example: "#0e457a"
 
 f.Color.SafeHex() // example: "#ff3300"
 
-f.Color.RgbAsNum() // example: 15, 247, 177
+f.Color.RGBAsNum() // example: 15, 247, 177
 
-f.Color.RgbAsStr() // example: "161,181,228"
+f.Color.RGBAsStr() // example: "161,181,228"
 
-f.Color.RgbAsArr() // example: [98 35 65]
+f.Color.RGBAsArr() // example: [98 35 65]
 
-f.Color.RgbCss() // example: "rgb(223,67,224)"
+f.Color.RGBCSS() // example: "rgb(223,67,224)"
 
-f.Color.RgbaCss() // example: "rgba(66,112,144,0.3)"
+f.Color.RGBACSS() // example: "rgba(66,112,144,0.3)"
 
-f.Color.HslAsNum() // example: 153, 97, 56
+f.Color.HSLAsNum() // example: 153, 97, 56
 
-f.Color.HslAsStr() // example: "149,85,59"
+f.Color.HSLAsStr() // example: "149,85,59"
 
-f.Color.HslAsArr() // example: [31 69 46]
+f.Color.HSLAsArr() // example: [31 69 46]
 ```
 
 ### File

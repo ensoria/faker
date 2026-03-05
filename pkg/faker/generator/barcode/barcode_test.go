@@ -17,23 +17,23 @@ var _ = Describe("Barcode", func() {
 	bc := barcode.New(coreRand)
 
 	Describe("EAN", func() {
-		It("Ean8 should return a barcode with 8 digits", func() {
-			r := bc.Ean8()
+		It("EAN8 should return a barcode with 8 digits", func() {
+			r := bc.EAN8()
 			Expect(r).To(MatchRegexp(`^\d{8}$`))
 			lastDigit, _ := strconv.Atoi(r[7:])
 			heading7Digits := r[:7]
-			Expect(lastDigit).To(Equal(barcode.CalcEanCheckDigit(heading7Digits)))
+			Expect(lastDigit).To(Equal(barcode.CalcEANCheckDigit(heading7Digits)))
 		})
 
-		It("Ean13 should return a barcode with 13 digits", func() {
-			r := bc.Ean13()
+		It("EAN13 should return a barcode with 13 digits", func() {
+			r := bc.EAN13()
 			Expect(r).To(MatchRegexp(`^\d{13}$`))
 			lastDigit, _ := strconv.Atoi(r[12:])
 			heading12Digits := r[:12]
-			Expect(lastDigit).To(Equal(barcode.CalcEanCheckDigit(heading12Digits)))
+			Expect(lastDigit).To(Equal(barcode.CalcEANCheckDigit(heading12Digits)))
 		})
 
-		It("CalcEanCheckDigit should calculate barcode check digit", func() {
+		It("CalcEANCheckDigit should calculate barcode check digit", func() {
 			testCases := []struct {
 				digits string
 				want   int
@@ -52,32 +52,32 @@ var _ = Describe("Barcode", func() {
 				{"986126758742", 7},
 			}
 			for _, tc := range testCases {
-				result := barcode.CalcEanCheckDigit(tc.digits)
+				result := barcode.CalcEANCheckDigit(tc.digits)
 				Expect(result).To(Equal(tc.want))
 			}
 		})
 	})
 
 	Describe("ISBN", func() {
-		It("Isbn10 should return a ISBN with 10 digits", func() {
-			r := bc.Isbn10()
+		It("ISBN10 should return a ISBN with 10 digits", func() {
+			r := bc.ISBN10()
 			Expect(r).To(MatchRegexp(`^\d{9}[\dX]$`))
 
 			lastDigit := r[9:]
 			heading9Digits := r[:9]
-			Expect(lastDigit).To(Equal(barcode.CalcIsbnCheckDigit(heading9Digits)))
+			Expect(lastDigit).To(Equal(barcode.CalcISBNCheckDigit(heading9Digits)))
 		})
 
-		It("Isbn13 should return a ISBN with 13 digits", func() {
-			r := bc.Isbn13()
+		It("ISBN13 should return a ISBN with 13 digits", func() {
+			r := bc.ISBN13()
 			Expect(r).To(MatchRegexp(`^97[89]\d{10}$`))
 
 			lastDigit, _ := strconv.Atoi(r[12:])
 			heading12Digits := r[:12]
-			Expect(lastDigit).To(Equal(barcode.CalcEanCheckDigit(heading12Digits)))
+			Expect(lastDigit).To(Equal(barcode.CalcEANCheckDigit(heading12Digits)))
 		})
 
-		It("CalcIsbnCheckDigit should calculate ISBN check digit", func() {
+		It("CalcISBNCheckDigit should calculate ISBN check digit", func() {
 			testCases := []struct {
 				input string
 				want  string
@@ -91,7 +91,7 @@ var _ = Describe("Barcode", func() {
 			}
 
 			for _, tc := range testCases {
-				got := barcode.CalcIsbnCheckDigit(tc.input)
+				got := barcode.CalcISBNCheckDigit(tc.input)
 				Expect(got).To(Equal(tc.want))
 			}
 		})

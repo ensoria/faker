@@ -68,24 +68,24 @@ func main() {
 	f.Rand.Map.KeySliceValue(sliceValues)
 
 	// barcode
-	f.Barcode.Ean8()
-	f.Barcode.Ean13()
-	f.Barcode.Isbn10()
-	f.Barcode.Isbn13()
+	f.Barcode.EAN8()
+	f.Barcode.EAN13()
+	f.Barcode.ISBN10()
+	f.Barcode.ISBN13()
 
 	// color
 	f.Color.SafeName()
 	f.Color.Name()
 	f.Color.Hex()
 	f.Color.SafeHex()
-	f.Color.RgbAsNum()
-	f.Color.RgbAsStr()
-	f.Color.RgbAsArr()
-	f.Color.RgbCss()
-	f.Color.RgbaCss()
-	f.Color.HslAsNum()
-	f.Color.HslAsStr()
-	f.Color.HslAsArr()
+	f.Color.RGBAsNum()
+	f.Color.RGBAsStr()
+	f.Color.RGBAsArr()
+	f.Color.RGBCSS()
+	f.Color.RGBACSS()
+	f.Color.HSLAsNum()
+	f.Color.HSLAsStr()
+	f.Color.HSLAsArr()
 
 	//  file
 	f.File.MimeType()
