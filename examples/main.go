@@ -138,9 +138,9 @@ func main() {
 	f.Payment.CreditCardExpirationDate(true)
 	f.Payment.CreditCardExpirationDateString(true, "")
 	f.Payment.CreditCardDetailsResult(true, f.Person.Name())
-	f.Payment.Iban("", "")
-	f.Payment.Iban("DE", "")
-	f.Payment.SwiftBicNumber()
+	f.Payment.IBAN("", "")
+	f.Payment.IBAN("DE", "")
+	f.Payment.SWIFTBICNumber()
 
 	// phone number
 	f.PhoneNumber.PhoneNumber()

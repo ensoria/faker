@@ -153,61 +153,61 @@ var _ = Describe("Payment", func() {
 		})
 	})
 
-	Describe("Iban", func() {
+	Describe("IBAN", func() {
 		It("should generate a valid IBAN with random country code", func() {
-			r := p.Iban("", "")
+			r := p.IBAN("", "")
 			Expect(len(r)).To(BeNumerically(">=", 4))
 			// First two chars should be uppercase letters (country code)
 			Expect(r[:2]).To(MatchRegexp(`^[A-Z]{2}$`))
 			// Next two chars should be digits (check digits)
 			Expect(r[2:4]).To(MatchRegexp(`^\d{2}$`))
-			Expect(payment.IsIbanValid(r)).To(BeTrue())
-			testutil.Output("Payment.Iban (random)", r)
+			Expect(payment.IsIBANValid(r)).To(BeTrue())
+			testutil.Output("Payment.IBAN (random)", r)
 		})
 
 		It("should generate a valid German IBAN", func() {
-			r := p.Iban("DE", "")
+			r := p.IBAN("DE", "")
 			Expect(r).To(HavePrefix("DE"))
 			// DE IBAN: DE + 2 check digits + 18 digits = 22 chars
 			Expect(r).To(HaveLen(22))
-			Expect(payment.IsIbanValid(r)).To(BeTrue())
-			testutil.Output("Payment.Iban (DE)", r)
+			Expect(payment.IsIBANValid(r)).To(BeTrue())
+			testutil.Output("Payment.IBAN (DE)", r)
 		})
 
 		It("should generate a valid British IBAN", func() {
-			r := p.Iban("GB", "")
+			r := p.IBAN("GB", "")
 			Expect(r).To(HavePrefix("GB"))
 			// GB IBAN: GB + 2 check digits + 4 letters + 14 digits = 22 chars
 			Expect(r).To(HaveLen(22))
-			Expect(payment.IsIbanValid(r)).To(BeTrue())
-			testutil.Output("Payment.Iban (GB)", r)
+			Expect(payment.IsIBANValid(r)).To(BeTrue())
+			testutil.Output("Payment.IBAN (GB)", r)
 		})
 
 		It("should generate a valid IBAN with a prefix", func() {
-			r := p.Iban("DE", "3704")
+			r := p.IBAN("DE", "3704")
 			Expect(r).To(HavePrefix("DE"))
 			// The BBAN should start with the prefix
 			Expect(r[4:8]).To(Equal("3704"))
-			Expect(payment.IsIbanValid(r)).To(BeTrue())
-			testutil.Output("Payment.Iban (DE, prefix)", r)
+			Expect(payment.IsIBANValid(r)).To(BeTrue())
+			testutil.Output("Payment.IBAN (DE, prefix)", r)
 		})
 
 		It("should handle lowercase country code", func() {
-			r := p.Iban("de", "")
+			r := p.IBAN("de", "")
 			Expect(r).To(HavePrefix("DE"))
-			Expect(payment.IsIbanValid(r)).To(BeTrue())
+			Expect(payment.IsIBANValid(r)).To(BeTrue())
 		})
 	})
 
-	Describe("SwiftBicNumber", func() {
+	Describe("SWIFTBICNumber", func() {
 		It("should return a valid SWIFT/BIC number", func() {
-			r := p.SwiftBicNumber()
+			r := p.SWIFTBICNumber()
 			// SWIFT format: 4 letters + 2 letters + 2 alphanumeric + optional 3 alphanumeric
 			// Total: 8 or 11 characters
 			validPattern := regexp.MustCompile(`^[A-Z]{4}[A-Z]{2}[0-9A-Z]{2}([0-9A-Z]{3})?$`)
 			Expect(validPattern.MatchString(r)).To(BeTrue())
 			Expect(len(r)).To(SatisfyAny(Equal(8), Equal(11)))
-			testutil.Output("Payment.SwiftBicNumber", r)
+			testutil.Output("Payment.SWIFTBICNumber", r)
 		})
 	})
 })

@@ -7,8 +7,8 @@ import (
 	"github.com/ensoria/faker/pkg/faker/generator/payment"
 )
 
-var _ = Describe("Iban", func() {
-	Describe("CalcIbanChecksum", func() {
+var _ = Describe("IBAN", func() {
+	Describe("CalcIBANChecksum", func() {
 		It("should compute correct IBAN checksums", func() {
 			testCases := []struct {
 				iban string
@@ -21,31 +21,31 @@ var _ = Describe("Iban", func() {
 			}
 
 			for _, tc := range testCases {
-				Expect(payment.CalcIbanChecksum(tc.iban)).To(Equal(tc.want))
+				Expect(payment.CalcIBANChecksum(tc.iban)).To(Equal(tc.want))
 			}
 		})
 	})
 
-	Describe("IsIbanValid", func() {
+	Describe("IsIBANValid", func() {
 		It("should return true for valid IBANs", func() {
-			validIbans := []string{
+			validIBANs := []string{
 				"GB82WEST12345698765432",
 				"DE89370400440532013000",
 				"FR7630006000011234567890189",
 				"ES9121000418450200051332",
 			}
-			for _, iban := range validIbans {
-				Expect(payment.IsIbanValid(iban)).To(BeTrue(), "expected %s to be valid", iban)
+			for _, iban := range validIBANs {
+				Expect(payment.IsIBANValid(iban)).To(BeTrue(), "expected %s to be valid", iban)
 			}
 		})
 
 		It("should return false for invalid IBANs", func() {
-			invalidIbans := []string{
+			invalidIBANs := []string{
 				"GB00WEST12345698765432",
 				"DE00370400440532013000",
 			}
-			for _, iban := range invalidIbans {
-				Expect(payment.IsIbanValid(iban)).To(BeFalse(), "expected %s to be invalid", iban)
+			for _, iban := range invalidIBANs {
+				Expect(payment.IsIBANValid(iban)).To(BeFalse(), "expected %s to be invalid", iban)
 			}
 		})
 	})

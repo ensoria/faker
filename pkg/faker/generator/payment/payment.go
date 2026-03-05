@@ -12,7 +12,7 @@ import (
 const (
 	defaultExpirationDateFormat = "01/06" // Go time format: MM/YY
 	defaultCardSeparator        = "-"
-	defaultIbanLength           = 24
+	defaultIBANLength           = 24
 	expirationValidMonths       = 36
 	upperLetters                = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 )
@@ -129,24 +129,24 @@ func (p *Payment) CreditCardDetailsResult(valid bool, holderName string) *Credit
 	}
 }
 
-// Iban generates an International Bank Account Number (IBAN).
+// IBAN generates an International Bank Account Number (IBAN).
 // countryCode is an ISO 3166-1 alpha-2 country code. If empty, a random country is selected.
 // prefix is an optional prefix for the bank account number portion.
 // See: http://en.wikipedia.org/wiki/International_Bank_Account_Number
-func (p *Payment) Iban(countryCode string, prefix string) string {
+func (p *Payment) IBAN(countryCode string, prefix string) string {
 	if countryCode == "" {
-		countryCode, _ = core.GetRandomKeyValue(p.rand.Map, p.data.IbanFormats)
+		countryCode, _ = core.GetRandomKeyValue(p.rand.Map, p.data.IBANFormats)
 	} else {
 		countryCode = strings.ToUpper(countryCode)
 	}
 
-	format, hasFormat := p.data.IbanFormats[countryCode]
+	format, hasFormat := p.data.IBANFormats[countryCode]
 
 	// Calculate total length from format
 	length := 0
 	if !hasFormat {
-		length = defaultIbanLength
-		format = [][2]any{{"n", defaultIbanLength}}
+		length = defaultIBANLength
+		format = [][2]any{{"n", defaultIBANLength}}
 	} else {
 		for _, part := range format {
 			count := part[1].(int)
@@ -155,7 +155,7 @@ func (p *Payment) Iban(countryCode string, prefix string) string {
 	}
 
 	// Expand format into a string of character classes
-	expandedFormat := p.expandIbanFormat(format)
+	expandedFormat := p.expandIBANFormat(format)
 
 	// Generate result starting with prefix
 	result := prefix
@@ -176,15 +176,15 @@ func (p *Payment) Iban(countryCode string, prefix string) string {
 		}
 	}
 
-	checksum := CalcIbanChecksum(countryCode + "00" + result)
+	checksum := CalcIBANChecksum(countryCode + "00" + result)
 
 	return countryCode + checksum + result
 }
 
-// SwiftBicNumber generates a random SWIFT/BIC number.
+// SWIFTBICNumber generates a random SWIFT/BIC number.
 // See: http://en.wikipedia.org/wiki/ISO_9362
 // Example: "RZTIAT22263"
-func (p *Payment) SwiftBicNumber() string {
+func (p *Payment) SWIFTBICNumber() string {
 	// SWIFT/BIC format: 4 letters (bank) + 2 letters (country) + 2 alphanumeric (location) + optional 3 alphanumeric (branch)
 	var result strings.Builder
 
@@ -221,8 +221,8 @@ func (p *Payment) SwiftBicNumber() string {
 	return result.String()
 }
 
-// expandIbanFormat expands an IBAN format definition into a string of character classes.
-func (p *Payment) expandIbanFormat(format [][2]any) string {
+// expandIBANFormat expands an IBAN format definition into a string of character classes.
+func (p *Payment) expandIBANFormat(format [][2]any) string {
 	var expanded strings.Builder
 	for _, item := range format {
 		class := item[0].(string)

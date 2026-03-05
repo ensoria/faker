@@ -2,10 +2,10 @@ package payment
 
 import "fmt"
 
-// CalcIbanChecksum generates the two-digit IBAN checksum for a given IBAN string.
+// CalcIBANChecksum generates the two-digit IBAN checksum for a given IBAN string.
 // The input iban should have the country code as the first two characters,
 // followed by "00" as placeholder check digits, then the BBAN.
-func CalcIbanChecksum(iban string) string {
+func CalcIBANChecksum(iban string) string {
 	// Move first four characters to end and set check digits to "00"
 	checkString := iban[4:] + iban[0:2] + "00"
 
@@ -25,9 +25,9 @@ func CalcIbanChecksum(iban string) string {
 	return fmt.Sprintf("%02d", checksum)
 }
 
-// IsIbanValid checks whether an IBAN has a valid checksum.
-func IsIbanValid(iban string) bool {
-	return CalcIbanChecksum(iban) == iban[2:4]
+// IsIBANValid checks whether an IBAN has a valid checksum.
+func IsIBANValid(iban string) bool {
+	return CalcIBANChecksum(iban) == iban[2:4]
 }
 
 // ibanAlphaToNumber converts an uppercase letter to its IBAN numeric equivalent.

@@ -54,7 +54,7 @@ type Medicals struct {
 type Payments struct {
 	CardVendors []string
 	CardParams  map[string][]string
-	IbanFormats map[string][][2]any // each element is [charClass(string), count(int)]
+	IBANFormats map[string][][2]any // each element is [charClass(string), count(int)]
 }
 
 // PhoneNumbers holds phone number format data.

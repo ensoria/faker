@@ -6,7 +6,7 @@ func CreatePayments() *provider.Payments {
 	return &provider.Payments{
 		CardVendors: cardVendors,
 		CardParams:  cardParams,
-		IbanFormats: ibanFormats,
+		IBANFormats: ibanFormats,
 	}
 }
 
