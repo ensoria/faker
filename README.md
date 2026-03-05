@@ -287,19 +287,82 @@ f.Lorem.Paragraphs(5, 5) // example:
 
 ### Medical
 
-TODO:
+```go
+f.Medical.BloodType() // example: "O"
+
+f.Medical.BloodRhFactor() // example: "+"
+
+f.Medical.BloodGroup() // example: "AB-"
+
+```
 
 ### Payment
 
-TODO:
+```go
+f.Payment.CreditCardType() // example: "Visa"
+
+f.Payment.CreditCardNumber("") // example: "4024007142538"
+
+f.Payment.CreditCardNumber("Visa") // example: "4532463395885642"
+
+f.Payment.CreditCardNumberFormatted("Visa", "-") // example: "4597-9650-4195-3089"
+
+f.Payment.CreditCardExpirationDate(true) // example: `time.Time`: 2026-05-31 17:44:02.496343249 +0900 JST m=+7520088.956891708
+
+f.Payment.CreditCardExpirationDateString(true, "") // example: 04/27
+
+f.Payment.CreditCardDetailsResult(true, f.Person.Name()) // example: `payment.CreditCardDetails`: &{MasterCard 2590375307974525 John Doe 05/28}
+
+f.Payment.IBAN("", "") // example: "DO125R9578724012889910398673"
+
+f.Payment.IBAN("DE", "") // example: "DE78970818524005997887"
+
+f.Payment.SWIFTBICNumber() // example: "UBAIYK48"
+
+```
 
 ### Phone Number
 
-TODO:
+```go
+f.PhoneNumber.PhoneNumber() // example: "201-886-0269"
+// example ja_JP: "090-1234-5678"
+
+f.PhoneNumber.E164PhoneNumber() // example: "+27113456789"
+
+f.PhoneNumber.IMEI() // example: "354809024498147"
+
+```
 
 ### User Agent
 
-TODO:
+```go
+f.UserAgent.RandomUserAgent() // example: "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/5342 (KHTML, like Gecko) Chrome/37.0.849.0 Mobile Safari/5342"
+
+f.UserAgent.Chrome() // example: "Mozilla/5.0 (Macintosh; PPC Mac OS X 10_6_5) AppleWebKit/5312 (KHTML, like Gecko) Chrome/14.0.894.0 Mobile Safari/5312"
+
+f.UserAgent.MSEdge() // example: "Mozilla/5.0 (Windows NT 6.0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/90.0.4664.61 Safari/535.2 Edg/90.01016.28"
+
+f.UserAgent.Firefox() // example: "Mozilla/5.0 (X11; Linux i686; rv:7.0) Gecko/20101231 Firefox/36.0"
+
+f.UserAgent.Safari() // example: "Mozilla/5.0 (Windows; U; Windows NT 5.1) AppleWebKit/534.12.5 (KHTML, like Gecko) Version/4.0 Safari/534.12.5"
+
+f.UserAgent.Opera() // example: "Opera/8.25 (Windows NT 5.1; en-US) Presto/2.9.188 Version/10.00"
+
+f.UserAgent.InternetExplorer() // example: "Mozilla/5.0 (compatible; MSIE 7.0; Windows 98; Win 9x 4.90; Trident/3.0)"
+
+f.UserAgent.WindowsPlatformToken() // example: "Windows NT 6.1"
+
+f.UserAgent.MacPlatformToken() // example: "Macintosh; Intel Mac OS X 10_7_3"
+
+f.UserAgent.IOSMobileToken() // example: "iPhone; CPU iPhone OS 14_1 like Mac OS X"
+
+f.UserAgent.LinuxPlatformToken() // example: "X11; Linux x86_64"
+
+f.UserAgent.MacProcessor() // example: "Intel"
+
+f.UserAgent.LinuxProcessor() // example: "x86_64"
+
+```
 
 ### Locale
 
