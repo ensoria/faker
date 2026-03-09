@@ -247,6 +247,9 @@ f.Internet.LocalIPv4() // example: 172.27.204.249
 
 f.Internet.MACAddress() // example: 01:ED:77:9F:1C:E1
 
+f.Internet.Slug(6, false) // example: voluptate-non-mollitia-sit-deleniti-vel
+
+f.Internet.URL() // example: https://www.tremblay.info/deleniti-suscipit-corrupti-neque-ea-cum-odit
 
 ```
 

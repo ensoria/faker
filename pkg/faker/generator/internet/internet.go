@@ -11,15 +11,24 @@ import (
 	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
+const (
+	defaultSlugWordCount = 6
+	slugVarianceMin      = 60
+	slugVarianceMax      = 140
+	slugVarianceDivisor  = 100
+)
+
 type Internet struct {
-	rand *core.Rand
-	data *provider.Internets
+	rand  *core.Rand
+	data  *provider.Internets
+	words []string
 }
 
 func New(rand *core.Rand, global *provider.Global) *Internet {
 	return &Internet{
-		rand,
-		global.Internets,
+		rand:  rand,
+		data:  global.Internets,
+		words: global.Lorems.Words,
 	}
 }
 
@@ -73,16 +82,42 @@ func (i *Internet) Password() string {
 	return i.rand.Str.AlphaDigitsLike(like)
 }
 
-// TODO: Loremができてから戻って来る
-func (i *Internet) Slug() string {
-	//
-	return ""
+// Slug generates a URL slug from random lorem words joined by hyphens.
+// If variableWordCount is true, the actual word count varies around nbWords.
+// Example: "aut-repellat-commodi-vel-itaque-nihil"
+func (i *Internet) Slug(nbWords int, variableWordCount bool) string {
+	if nbWords <= 0 {
+		nbWords = defaultSlugWordCount
+	}
+
+	if variableWordCount {
+		nbWords = nbWords*i.rand.Num.IntBt(slugVarianceMin, slugVarianceMax)/slugVarianceDivisor + 1
+	}
+
+	words := make([]string, nbWords)
+	for idx := 0; idx < nbWords; idx++ {
+		words[idx] = i.rand.Slice.StrElem(i.words)
+	}
+
+	return strings.Join(words, "-")
 }
 
-// TODO: Slugが必要なので、Loremができてから戻って来る
+// URL generates a random URL.
+// Example: "http://www.runolfsdottir.com/aut-repellat-commodi"
 func (i *Internet) URL() string {
-	//
-	return ""
+	format := i.rand.Slice.StrElem(i.data.URLFormats)
+
+	data := &urlData{
+		DomainName: i.DomainName(),
+		Slug:       i.Slug(defaultSlugWordCount, true),
+	}
+
+	return util.RenderTemplate(format, data)
+}
+
+type urlData struct {
+	DomainName string
+	Slug       string
 }
 
 func (i *Internet) IPv4() net.IP {

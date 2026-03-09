@@ -15,11 +15,10 @@ func CreateInternets() *provider.Internets {
 		// email
 		EmailFormats: EmailFormats,
 		CreateEmail:  CreateEmail,
-		//
+		// url
 		TLD:           TLD,
 		URLFormats:    URLFormats,
 		LocalIPBlocks: LocalIPBlocks,
-		// TODO: 他のlocaleのデータも見て、globalで必要そうなら追加する
 	}
 }
 
@@ -80,8 +79,6 @@ func CreateEmail(i any) any {
 	}
 }
 
-// TODO:
-// var Slugs = []string{}
 var URLFormats = []string{
 	"http://www.{{.DomainName}}/",
 	"http://{{.DomainName}}/",

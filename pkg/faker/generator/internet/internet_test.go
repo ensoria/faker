@@ -1,6 +1,8 @@
 package internet_test
 
 import (
+	"strings"
+
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
@@ -14,11 +16,12 @@ import (
 
 var _ = Describe("Internet", func() {
 	coreRand := core.NewRand(util.RandSeed())
-	global := &provider.Global{
+	g := &provider.Global{
 		Internets: global.CreateInternets(),
+		Lorems:    global.CreateLorems(),
 	}
 
-	inet := internet.New(coreRand, global)
+	inet := internet.New(coreRand, g)
 
 	Describe("Email", func() {
 
@@ -61,12 +64,50 @@ var _ = Describe("Internet", func() {
 		})
 	})
 
-	It("TODO: Slug", func() {
-		Skip("Slug: come back when Lorem is done")
+	Describe("Slug", func() {
+		It("should return hyphen-separated words", func() {
+			r := inet.Slug(6, false)
+			Expect(r).NotTo(BeEmpty())
+			Expect(r).To(MatchRegexp(`^[a-z]+(-[a-z]+)*$`))
+			testutil.Output("Internet.Slug", r)
+		})
+
+		It("should return the specified number of words when variableWordCount is false", func() {
+			r := inet.Slug(3, false)
+			parts := strings.Split(r, "-")
+			Expect(parts).To(HaveLen(3))
+		})
+
+		It("should use default word count when nbWords is 0", func() {
+			r := inet.Slug(0, false)
+			parts := strings.Split(r, "-")
+			Expect(parts).To(HaveLen(6))
+		})
+
+		It("should vary word count when variableWordCount is true", func() {
+			// Run multiple times to verify it produces varying lengths
+			counts := make(map[int]bool)
+			for i := 0; i < 50; i++ {
+				r := inet.Slug(6, true)
+				parts := strings.Split(r, "-")
+				counts[len(parts)] = true
+			}
+			// With variable word count, we should see more than one distinct length
+			Expect(len(counts)).To(BeNumerically(">", 1))
+		})
 	})
 
-	It("TODO: URL", func() {
-		Skip("URL: come back when Lorem is done")
+	Describe("URL", func() {
+		It("should return a valid URL", func() {
+			r := inet.URL()
+			Expect(r).To(MatchRegexp(`^https?://`))
+			testutil.Output("Internet.URL", r)
+		})
+
+		It("should contain a domain name", func() {
+			r := inet.URL()
+			Expect(r).To(MatchRegexp(`https?://(www\.)?[a-z]+\.[a-z]+`))
+		})
 	})
 
 	Describe("Network", func() {

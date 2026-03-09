@@ -110,6 +110,8 @@ func main() {
 	f.Internet.IPv6()
 	f.Internet.LocalIPv4()
 	f.Internet.MACAddress()
+	f.Internet.Slug(6, false)
+	f.Internet.URL()
 
 	// lorem
 	f.Lorem.Word()

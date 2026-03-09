@@ -1,7 +1,5 @@
 package core
 
-// TODO: PHP Fakerを真似る
-// ref: ~/EXPERIMENT/php/exp-faker
 import (
 	"fmt"
 	"math/rand"
