@@ -321,17 +321,6 @@ f.Payment.SWIFTBICNumber() // example: "UBAIYK48"
 
 ```
 
-### Phone Number
-
-```go
-f.PhoneNumber.PhoneNumber() // example: "201-886-0269"
-// example ja_JP: "090-1234-5678"
-
-f.PhoneNumber.E164PhoneNumber() // example: "+27113456789"
-
-f.PhoneNumber.IMEI() // example: "354809024498147"
-
-```
 
 ### User Agent
 
@@ -514,5 +503,19 @@ f.Person.FemaleKanaName() // example: ""
 
 f.Person.KanaName() // example: ""
 // example ja_Jp: "イダカ サトミ"
+
+```
+
+## Global/Locale
+
+### Phone Number
+
+```go
+f.PhoneNumber.PhoneNumber() // example: "201-886-0269"
+// example ja_JP: "090-1234-5678"
+
+f.PhoneNumber.E164PhoneNumber() // example: "+27113456789"
+
+f.PhoneNumber.IMEI() // example: "354809024498147"
 
 ```
