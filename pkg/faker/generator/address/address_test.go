@@ -116,7 +116,7 @@ var _ = Describe("Address", func() {
 			Expect(r).To(BeNumerically(">=", -90.0))
 			Expect(r).To(BeNumerically("<=", 90.0))
 
-			length := testutil.GetDecimalLength(r)
+			length := testutil.VisibleDecimalPlaces(r)
 			// when the end of the number is 0, float64 may have less than 5 digits instead of 6
 			Expect(length).To(BeNumerically("<=", 6))
 			testutil.Output("Address.Latitude", r)
@@ -129,7 +129,7 @@ var _ = Describe("Address", func() {
 			Expect(r).To(BeNumerically(">=", -180.0))
 			Expect(r).To(BeNumerically("<=", 180.0))
 
-			length := testutil.GetDecimalLength(r)
+			length := testutil.VisibleDecimalPlaces(r)
 			// when the end of the number is 0, float64 may have less than 5 digits instead of 6
 			Expect(length).To(BeNumerically("<=", 6))
 			testutil.Output("Address.Longitude", r)
@@ -141,12 +141,12 @@ var _ = Describe("Address", func() {
 			lat, lon := addressUs.LocalCoordinates()
 			Expect(lat).To(BeNumerically(">=", -90.0))
 			Expect(lat).To(BeNumerically("<=", 90.0))
-			latLength := testutil.GetDecimalLength(lat)
+			latLength := testutil.VisibleDecimalPlaces(lat)
 			Expect(latLength).To(BeNumerically("<=", 6))
 
 			Expect(lon).To(BeNumerically(">=", -180.0))
 			Expect(lon).To(BeNumerically("<=", 180.0))
-			lonLength := testutil.GetDecimalLength(lon)
+			lonLength := testutil.VisibleDecimalPlaces(lon)
 			Expect(lonLength).To(BeNumerically("<=", 6))
 		})
 	})

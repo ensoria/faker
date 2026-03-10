@@ -16,7 +16,7 @@ var _ = Describe("TruncateToPrecision", func() {
 		precision := rand.Intn(8)
 		r := util.TruncateToPrecision(1.23456789123456, precision)
 		fmt.Println(r)
-		decimalLength := testutil.GetDecimalLength(r)
+		decimalLength := testutil.VisibleDecimalPlaces(r)
 		fmt.Println(decimalLength)
 
 		Expect(decimalLength).To(Equal(precision))

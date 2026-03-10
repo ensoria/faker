@@ -19,8 +19,10 @@ func IsInSlice[T comparable](val T, slice []T) bool {
 	return false
 }
 
-func GetDecimalLength(val float64) int {
-	// FIXME: 末尾が0の場合に、切り捨てられるため、正確な桁数が取得できない
+// VisibleDecimalPlaces returns the number of visible decimal places of a float64 value.
+// Note: trailing zeros are not preserved in float64, so this returns the apparent
+// number of decimal digits (e.g. 1.500000 → 1.5 → 1, not 6).
+func VisibleDecimalPlaces(val float64) int {
 	strVal := strconv.FormatFloat(val, 'f', -1, 64)
 	decimalVal := strings.Split(strVal, ".")
 	if len(decimalVal) < 2 {
