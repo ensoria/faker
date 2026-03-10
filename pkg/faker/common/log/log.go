@@ -1,10 +1,25 @@
 package log
 
 import (
-	"fmt"
 	"log"
 	"runtime"
 )
+
+const (
+	unavailableLocaleMsg = "This method is not available for the current locale."
+	wrongUsageMsgFormat  = `faker might-be-wrong-usage warning. Empty value of the type returned: "%s" at [%s]: line [%d]: called: [%s]`
+	generalErrorFormat   = "%s at [%s]: line [%d]: called: [%s]"
+)
+
+// logger is nil by default, meaning no log output.
+// Use SetLogger to enable logging.
+var logger *log.Logger
+
+// SetLogger sets the logger used by the faker package.
+// Pass nil to disable logging (default).
+func SetLogger(l *log.Logger) {
+	logger = l
+}
 
 func GetCallerInfo(skip int) (*runtime.Func, string, int) {
 	trueSkip := skip + 1
@@ -14,24 +29,24 @@ func GetCallerInfo(skip int) (*runtime.Func, string, int) {
 	return called, file, line
 }
 
-func UnavailableLocaleMsg() string {
-	return "This method is not available for the current locale."
-}
-
 func UnavailableLocale(skip int) {
-	WrongUsage(UnavailableLocaleMsg(), skip+1)
-}
-
-func WrongUsageMsg(msg string) string {
-	return fmt.Sprintf("faker might-be-wrong-usage warning. Empty value of the type returned: \"%s\"", msg)
+	WrongUsage(unavailableLocaleMsg, skip+1)
 }
 
 func WrongUsage(msg string, skip int) {
-	GeneralError(WrongUsageMsg(msg), skip+1)
+	if logger == nil {
+		return
+	}
+	trueSkip := skip + 1
+	caller, file, line := GetCallerInfo(trueSkip)
+	logger.Printf(wrongUsageMsgFormat, msg, file, line, caller.Name())
 }
 
 func GeneralError(msg string, skip int) {
+	if logger == nil {
+		return
+	}
 	trueSkip := skip + 1
 	caller, file, line := GetCallerInfo(trueSkip)
-	log.Printf("%s at [%s]: line [%d]: called: [%s]", msg, file, line, caller.Name())
+	logger.Printf(generalErrorFormat, msg, file, line, caller.Name())
 }

@@ -28,6 +28,26 @@ j := ja_JP.New()
 jp := faker.CreateWithLocale(j)
 ```
 
+## ログ出力
+
+fakerはデフォルトではログを出力しません。
+ロケールに存在しないメソッドの呼び出しや、不正な引数の使用時に警告ログを出力したい場合は、`SetLogger`でロガーを設定してください。
+
+```go
+import (
+	"log"
+	"os"
+
+	fakerlog "github.com/ensoria/faker/pkg/faker/common/log"
+)
+
+// 標準エラー出力にログを出力する例
+fakerlog.SetLogger(log.New(os.Stderr, "[faker] ", log.LstdFlags))
+
+// ログ出力を無効にする（デフォルト）
+fakerlog.SetLogger(nil)
+```
+
 ## メソッド
 
 

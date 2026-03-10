@@ -1,13 +1,18 @@
 package main
 
 import (
+	"log"
+	"os"
 	"time"
 
 	"github.com/ensoria/faker/pkg/faker"
+	fakerlog "github.com/ensoria/faker/pkg/faker/common/log"
 	"github.com/ensoria/faker/pkg/faker/provider/locale/ja_JP"
 )
 
 func main() {
+	fakerlog.SetLogger(log.New(os.Stderr, "[faker] ", log.LstdFlags))
+
 	f := faker.Create()
 	jf := faker.CreateWithLocale(ja_JP.New())
 
