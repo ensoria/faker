@@ -18,11 +18,11 @@ type PhoneNumber struct {
 	localData  *provider.PhoneNumbers
 }
 
-func New(rand *core.Rand, global *provider.Global, local *provider.Localized) *PhoneNumber {
+func New(rand *core.Rand, global *provider.Global, localized *provider.Localized) *PhoneNumber {
 	return &PhoneNumber{
 		rand:       rand,
 		globalData: global.PhoneNumbers,
-		localData:  local.PhoneNumbers,
+		localData:  localized.PhoneNumbers,
 	}
 }
 

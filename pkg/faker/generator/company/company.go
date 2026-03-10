@@ -14,10 +14,10 @@ type Company struct {
 	data *provider.Companies
 }
 
-func New(rand *core.Rand, local *provider.Localized) *Company {
+func New(rand *core.Rand, localized *provider.Localized) *Company {
 	return &Company{
 		rand,
-		local.Companies,
+		localized.Companies,
 	}
 }
 

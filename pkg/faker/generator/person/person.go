@@ -12,10 +12,10 @@ type Person struct {
 	data *provider.People
 }
 
-func New(rand *core.Rand, local *provider.Localized) *Person {
+func New(rand *core.Rand, localized *provider.Localized) *Person {
 	return &Person{
 		rand,
-		local.People,
+		localized.People,
 	}
 }
 

@@ -356,7 +356,7 @@ f.UserAgent.LinuxProcessor() // example: "x86_64"
 
 ```
 
-### Locale
+## Locale
 
 インスタンス作成時に、渡すロケールによって作成されるデータが変わります。
 

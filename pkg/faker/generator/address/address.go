@@ -12,10 +12,10 @@ type Address struct {
 	data *provider.Addresses
 }
 
-func New(rand *core.Rand, local *provider.Localized) *Address {
+func New(rand *core.Rand, localized *provider.Localized) *Address {
 	return &Address{
 		rand,
-		local.Addresses,
+		localized.Addresses,
 	}
 }
 
