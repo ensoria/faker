@@ -184,6 +184,17 @@ var _ = Describe("Address", func() {
 			testutil.Output("Address.AreaNumber", r)
 		})
 
+		It("AreaNumber should not start with 0 in any numeric segment", func() {
+			for i := 0; i < 100; i++ {
+				r := addressJaJP.AreaNumber()
+				// 丁目・番地の数値が0始まりにならないこと (例: "0丁目", "0番地")
+				// "10番地" や "20丁目" は正常なので、先頭または区切り直後の0のみ検出
+				Expect(r).NotTo(MatchRegexp(`(^|[^0-9])0丁目`))
+				Expect(r).NotTo(MatchRegexp(`(^|[^0-9])0番地`))
+				Expect(r).NotTo(HavePrefix("0"))
+			}
+		})
+
 		It("AreaName should return an area name", func() {
 			r := addressJaJP.AreaName()
 			Expect(r).To(BeElementOf(ja_JP.AreaNames))

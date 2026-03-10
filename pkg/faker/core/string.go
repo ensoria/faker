@@ -9,10 +9,12 @@ import (
 
 const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const numbers = "0123456789"
+const nonZeroNumbers = "123456789"
 const specialChars = "!@#$%^&*()_+{}|:<>?-=[]\\;',./"
 
 var letterRunes = []rune(letters)
 var numberRunes = []rune(numbers)
+var nonZeroNumberRunes = []rune(nonZeroNumbers)
 var specialCharRunes = []rune(specialChars)
 var allRunes = []rune(letters + numbers + specialChars)
 
@@ -39,6 +41,10 @@ func (r *RandStr) Letter() string {
 
 func (r *RandStr) Digit() string {
 	return string(numberRunes[r.rand.Intn(len(numberRunes))])
+}
+
+func (r *RandStr) NonZeroDigit() string {
+	return string(nonZeroNumberRunes[r.rand.Intn(len(nonZeroNumberRunes))])
 }
 
 // min以上max以下のランダムな長さの文字列を返す。maxで指定した長さは含まれる。
@@ -70,9 +76,12 @@ func (r *RandStr) AlphaFixedLength(length int) string {
 	return result
 }
 
-// 指定した文字列の'?'の部分をランダムなアルファベットに置き換えて返し、
-// '#'の部分をランダムな数字に置き換えて返す。
-// '*'の部分はアルファベットと数字のどちらかにランダムに置き換える。
+// 指定した文字列の特殊記号をランダムな文字に置き換えて返す。
+//   - '?' → ランダムなアルファベット (a-zA-Z)
+//   - '#' → ランダムな数字 (0-9)
+//   - '%' → ゼロを除くランダムな数字 (1-9)
+//   - '*' → アルファベットと数字のどちらかにランダムに置き換える
+//
 // 例えば、likeが"??-??1??X##"の場合、"ab-cd1efX35"のような文字列を返す。
 func (r *RandStr) AlphaDigitsLike(like string) string {
 	result := ""
@@ -82,6 +91,8 @@ func (r *RandStr) AlphaDigitsLike(like string) string {
 			result += r.Letter()
 		case '#':
 			result += r.Digit()
+		case '%':
+			result += r.NonZeroDigit()
 		case '*':
 			tmp := r.Letter()
 			if r.rand.Intn(2) == 0 {

@@ -209,7 +209,6 @@ func (a *Address) AreaNumber() string {
 		log.UnavailableLocale(1)
 		return ""
 	}
-	// TODO: 0丁目0番地0号のような表記も含まれてしまうが問題ないか?
 	format := a.rand.Slice.StrElem(a.data.AreaNumbers)
 	return a.rand.Str.AlphaDigitsLike(format)
 }

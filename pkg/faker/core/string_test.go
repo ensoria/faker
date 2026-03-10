@@ -47,6 +47,25 @@ var _ = Describe("Tests for random string functions", func() {
 		})
 	})
 
+	Describe("NonZeroDigit", func() {
+		It("should return a single non-zero digit", func() {
+			r := randStr.NonZeroDigit()
+
+			Expect(r).ToNot(BeEmpty())
+			Expect(len(r)).To(Equal(1))
+			Expect(r).To(MatchRegexp(`^[1-9]$`))
+
+			testutil.Output("RandStr.NonZeroDigit", r)
+		})
+
+		It("should never return 0", func() {
+			for i := 0; i < 100; i++ {
+				r := randStr.NonZeroDigit()
+				Expect(r).NotTo(Equal("0"))
+			}
+		})
+	})
+
 	Describe("AlphaRange", func() {
 		It("should return a string with random length", func() {
 			r := randStr.AlphaRange(1, 5)
@@ -84,6 +103,14 @@ var _ = Describe("Tests for random string functions", func() {
 				Expect(r).To(MatchRegexp(`[\d\w]{3}`))
 
 				testutil.Output("RandStr.AlphaDigitsLike", r)
+			})
+		})
+		When("like contains '%' for non-zero digits", func() {
+			It("should return non-zero digits for '%' positions", func() {
+				for i := 0; i < 100; i++ {
+					r := randStr.AlphaDigitsLike("%%%")
+					Expect(r).To(MatchRegexp(`^[1-9]{3}$`))
+				}
 			})
 		})
 
