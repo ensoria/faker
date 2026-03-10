@@ -74,12 +74,20 @@ f.Rand.Num.Intn(10)
 f.Rand.Str.Char() // example: "y"
 // アルファベット1文字
 f.Rand.Str.Letter() // example: "a"
-// 数字1文字
+// 数字1文字 (0-9)
 f.Rand.Str.Digit() // example: "1"
-f.Rand.Str.AlphaRange(5, 10) // example: "VLkwXtKTJ""
+// 0を除く数字1文字 (1-9)
+f.Rand.Str.NonZeroDigit() // example: "5"
+// 特殊文字1文字
+f.Rand.Str.SpecialChar() // example: "$"
+// 英数字+特殊文字を含むランダムな文字列（指定した長さ）
+f.Rand.Str.RandomASCII(10) // example: "hS3Y.wnGtu"
+
+f.Rand.Str.AlphaRange(5, 10) // example: "VLkwXtKTJ"
 f.Rand.Str.AlphaFixedLength(10) // example: "PQRpBVWHow"
-// #は数字に、?はアルファベットに、*の英数のどちらかに置き換わります
-f.Rand.Str.AlphaDigitsLike("###-???-***") // example: "391-lwe-11u"
+// #は数字(0-9)に、?はアルファベットに、%は0を除く数字(1-9)に、
+// !は特殊文字に、*は英数のどちらかに置き換わります
+f.Rand.Str.AlphaDigitsLike("###-???-***-!!!-%%%") // example: "391-lwe-11u-$&(-457"
 
 ```
 
@@ -237,7 +245,8 @@ f.Internet.DomainName() // example: gutkowski.info
 
 f.Internet.Email() // example: charity.ziemann@mertz.net
 
-f.Internet.Password() // example: 9AYD57IF580tD76p55y
+f.Internet.Password(false) // example: XDb34186c6z76np12
+f.Internet.Password(true) // example: 836a52'68?'S#12+5_31
 
 f.Internet.IPv4() // example: 190.238.68.2
 

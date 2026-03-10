@@ -28,9 +28,12 @@ func main() {
 	f.Rand.Str.Char()
 	f.Rand.Str.Letter()
 	f.Rand.Str.Digit()
+	f.Rand.Str.NonZeroDigit()
+	f.Rand.Str.SpecialChar()
+	f.Rand.Str.RandomASCII(10)
 	f.Rand.Str.AlphaRange(5, 10)
 	f.Rand.Str.AlphaFixedLength(10)
-	f.Rand.Str.AlphaDigitsLike("###-???-***")
+	f.Rand.Str.AlphaDigitsLike("###-???-***-!!!-%%%")
 
 	// time
 	past30Years := time.Now().Add(-30 * 365 * 24 * time.Hour)
@@ -105,7 +108,8 @@ func main() {
 	f.Internet.TLD()
 	f.Internet.DomainName()
 	f.Internet.Email()
-	f.Internet.Password()
+	f.Internet.Password(false)
+	f.Internet.Password(true)
 	f.Internet.IPv4()
 	f.Internet.IPv6()
 	f.Internet.LocalIPv4()

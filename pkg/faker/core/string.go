@@ -47,6 +47,26 @@ func (r *RandStr) NonZeroDigit() string {
 	return string(nonZeroNumberRunes[r.rand.Intn(len(nonZeroNumberRunes))])
 }
 
+// SpecialChar returns a random special character (!@#$%^&*()_+{}|:<>?-=[]\;',./).
+func (r *RandStr) SpecialChar() string {
+	return string(specialCharRunes[r.rand.Intn(len(specialCharRunes))])
+}
+
+// RandomASCII returns a random string of the given length containing
+// letters, digits, and special characters.
+func (r *RandStr) RandomASCII(length int) string {
+	if length < 0 {
+		errMsg := fmt.Sprintf("Invalid length: %d", length)
+		log.WrongUsage(errMsg, 1)
+		return ""
+	}
+	var result string
+	for i := 0; i < length; i++ {
+		result += string(allRunes[r.rand.Intn(len(allRunes))])
+	}
+	return result
+}
+
 // min以上max以下のランダムな長さの文字列を返す。maxで指定した長さは含まれる。
 func (r *RandStr) AlphaRange(min int, max int) string {
 	if (min < 0) || (max < 0) || (min > max) || (min == max) {
@@ -80,6 +100,7 @@ func (r *RandStr) AlphaFixedLength(length int) string {
 //   - '?' → ランダムなアルファベット (a-zA-Z)
 //   - '#' → ランダムな数字 (0-9)
 //   - '%' → ゼロを除くランダムな数字 (1-9)
+//   - '!' → ランダムな特殊文字 (!@#$%^&*()_+{}|:<>?-=[]\;',./)
 //   - '*' → アルファベットと数字のどちらかにランダムに置き換える
 //
 // 例えば、likeが"??-??1??X##"の場合、"ab-cd1efX35"のような文字列を返す。
@@ -93,6 +114,8 @@ func (r *RandStr) AlphaDigitsLike(like string) string {
 			result += r.Digit()
 		case '%':
 			result += r.NonZeroDigit()
+		case '!':
+			result += r.SpecialChar()
 		case '*':
 			tmp := r.Letter()
 			if r.rand.Intn(2) == 0 {

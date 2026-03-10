@@ -12,10 +12,14 @@ import (
 )
 
 const (
-	defaultSlugWordCount = 6
-	slugVarianceMin      = 60
-	slugVarianceMax      = 140
-	slugVarianceDivisor  = 100
+	defaultSlugWordCount   = 6
+	slugVarianceMin        = 60
+	slugVarianceMax        = 140
+	slugVarianceDivisor    = 100
+	passwordMinLength      = 8
+	passwordMaxLength      = 20
+	passwordAlphaDigitChar = '*'
+	passwordSpecialChar    = '!'
 )
 
 type Internet struct {
@@ -73,13 +77,21 @@ func (i *Internet) Email() string {
 	return util.RenderTemplate(format, data)
 }
 
-// example: "18w50q2412G5Iky60QL"
-func (i *Internet) Password() string {
-	min := 8
-	max := 20
-	length := i.rand.Num.IntBt(min, max)
-	like := strings.Repeat("*", length)
-	return i.rand.Str.AlphaDigitsLike(like)
+// Password generates a random password string.
+// If includeSpecial is true, some characters will be special characters.
+// Example: "18w50q2412G5Iky60QL" (without special)
+// Example: "k3$Rp8!mZ2&xQ" (with special)
+func (i *Internet) Password(includeSpecial bool) string {
+	length := i.rand.Num.IntBt(passwordMinLength, passwordMaxLength)
+	var like []byte
+	for idx := 0; idx < length; idx++ {
+		if includeSpecial && i.rand.Num.Intn(4) == 0 {
+			like = append(like, byte(passwordSpecialChar))
+		} else {
+			like = append(like, byte(passwordAlphaDigitChar))
+		}
+	}
+	return i.rand.Str.AlphaDigitsLike(string(like))
 }
 
 // Slug generates a URL slug from random lorem words joined by hyphens.

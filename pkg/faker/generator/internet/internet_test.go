@@ -58,9 +58,29 @@ var _ = Describe("Internet", func() {
 			testutil.Output("Internet.Email", r)
 		})
 
-		It("Password should return a random string between 8 to 20 length", func() {
-			r := inet.Password()
+		It("Password without special chars should return alphanumeric string between 8 to 20 length", func() {
+			r := inet.Password(false)
 			Expect(r).To(MatchRegexp(`^[\d\w]{8,20}$`))
+			testutil.Output("Internet.Password(false)", r)
+		})
+
+		It("Password with special chars should return a string between 8 to 20 length", func() {
+			r := inet.Password(true)
+			Expect(len(r)).To(BeNumerically(">=", 8))
+			Expect(len(r)).To(BeNumerically("<=", 20))
+			testutil.Output("Internet.Password(true)", r)
+		})
+
+		It("Password with special chars should contain at least one special char across multiple runs", func() {
+			hasSpecial := false
+			for i := 0; i < 50; i++ {
+				r := inet.Password(true)
+				if strings.ContainsAny(r, "!@#$%^&*()_+{}|:<>?-=[]\\;',./") {
+					hasSpecial = true
+					break
+				}
+			}
+			Expect(hasSpecial).To(BeTrue())
 		})
 	})
 
