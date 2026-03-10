@@ -8,8 +8,8 @@ import (
 func CreateInternets() *provider.Internets {
 	return &provider.Internets{
 		// username
-		FirstNames:      *FirstNames,
-		LastNames:       *LastNames,
+		FirstNames:      FirstNames,
+		LastNames:       LastNames,
 		UserNameFormats: UserNameFormats,
 		CreateUserName:  CreateUserName,
 		// email
@@ -23,10 +23,9 @@ func CreateInternets() *provider.Internets {
 }
 
 // UserName
-var LastNames = &en_US.LastNames
+var LastNames = en_US.LastNames
 
-// TODO: concat with male names
-var FirstNames = &en_US.FirstNameFemales
+var FirstNames = append(en_US.FirstNameMales, en_US.FirstNameFemales...)
 var UserNameFormats = []string{
 	"{{.LastName}}.{{.FirstName}}",
 	"{{.FirstName}}.{{.LastName}}",
@@ -52,9 +51,18 @@ func CreateUserName(i any) any {
 	}
 }
 
-// TODO: add more
 var TLD = []string{
 	"com", "biz", "info", "net", "org",
+	"edu", "gov", "mil", "int", "co",
+	"io", "dev", "app", "ai", "me",
+	"tv", "cc", "us", "uk", "de",
+	"fr", "jp", "cn", "au", "ca",
+	"br", "in", "ru", "nl", "se",
+	"no", "fi", "dk", "ch", "at",
+	"be", "es", "it", "pt", "pl",
+	"cz", "kr", "mx", "za", "nz",
+	"ie", "sg", "hk", "tw", "cloud",
+	"xyz", "online", "site", "tech", "store",
 }
 
 var EmailFormats = []string{

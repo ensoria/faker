@@ -48,7 +48,7 @@ var _ = Describe("Address", func() {
 	Describe("City", func() {
 		It("CityName should return a city name", func() {
 			r := addressUs.CityName()
-			Expect(r).To(BeElementOf(*en_US.CityNames))
+			Expect(r).To(BeElementOf(en_US.CityNames))
 		})
 
 		It("CitySuffix should return a city suffix", func() {
@@ -70,7 +70,7 @@ var _ = Describe("Address", func() {
 	Describe("Street", func() {
 		It("StreetName should return a street name", func() {
 			r := addressUs.StreetName()
-			Expect(r).To(BeElementOf(*en_US.StreetNames))
+			Expect(r).To(BeElementOf(en_US.StreetNames))
 		})
 
 		It("StreetSuffix should return a street suffix", func() {
