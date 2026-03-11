@@ -18,11 +18,13 @@ type Colors struct {
 	AllColorNames  []string
 }
 
+type MIMEEntry struct {
+	Type       string
+	Extensions []string
+}
+
 type Files struct {
-	// REFACTOR: MIMETypes should be `MIMETypesAndExtensions`?
-	// MIMETypes type should be map[string][]string
-	// because of type restriction, it is set as map[any][]any
-	MIMETypes map[any][]any
+	MIMEEntries []*MIMEEntry
 }
 
 type Images struct{}

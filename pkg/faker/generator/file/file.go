@@ -21,21 +21,17 @@ func New(rand *core.Rand, global *provider.Global) *File {
 	}
 }
 
+func (f *File) randomEntry() *provider.MIMEEntry {
+	return f.data.MIMEEntries[f.rand.Num.Intn(len(f.data.MIMEEntries))]
+}
+
 func (f *File) MIMEType() string {
-	m, _ := f.rand.Map.KeySliceValue(f.data.MIMETypes)
-	return m.(string)
+	return f.randomEntry().Type
 }
 
 func (f *File) Extension() string {
-	_, e := f.rand.Map.KeySliceValue(f.data.MIMETypes)
-	extensions := e.([]any)
-	// compare to mime types slice, extension slices are usually very small.
-	// it should not be any performance issue.
-	strExtensions := make([]string, len(extensions))
-	for i, v := range extensions {
-		strExtensions[i] = v.(string)
-	}
-	return f.rand.Slice.StrElem(strExtensions)
+	entry := f.randomEntry()
+	return f.rand.Slice.StrElem(entry.Extensions)
 }
 
 // Create a file with the given content and extension.

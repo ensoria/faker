@@ -12,6 +12,7 @@ import (
 	"github.com/ensoria/faker/pkg/faker/generator/file"
 	"github.com/ensoria/faker/pkg/faker/provider"
 	"github.com/ensoria/faker/pkg/faker/provider/global"
+	"github.com/ensoria/faker/pkg/faker/testutil"
 )
 
 var _ = Describe("File", Ordered, func() {
@@ -23,15 +24,23 @@ var _ = Describe("File", Ordered, func() {
 	f := file.New(coreRand, global)
 
 	Describe("File", func() {
-		It("MIMEType should return a string", func() {
+		It("MIMEType should return a known MIME type", func() {
 			mimeType := f.MIMEType()
-			_, exists := global.Files.MIMETypes[mimeType]
-			Expect(exists).To(BeTrue())
+			found := false
+			for _, entry := range global.Files.MIMEEntries {
+				if entry.Type == mimeType {
+					found = true
+					break
+				}
+			}
+			Expect(found).To(BeTrue())
+			testutil.Output("File.MIMEType", mimeType)
 		})
 
 		It("Extension should return a string", func() {
 			extension := f.Extension()
 			Expect(extension).To(MatchRegexp(`^[0-9a-z-]{2,20}$`))
+			testutil.Output("File.Extension", extension)
 		})
 	})
 	// NOTICE: you could use `t.TempDir() to create a temporary directory.
