@@ -140,7 +140,7 @@ func (i *Internet) IPv4() net.IP {
 		ipNum = i.rand.Num.IntBt(16777216, 2147483647)
 	}
 
-	return long2ip(uint32(ipNum))
+	return uint32ToIP(uint32(ipNum))
 }
 
 func (i *Internet) IPv6() string {
@@ -157,10 +157,10 @@ func (i *Internet) IPv6() string {
 func (i *Internet) LocalIPv4() net.IP {
 	lenIPBlocks := len(i.data.LocalIPBlocks)
 	ipBlock := i.data.LocalIPBlocks[i.rand.Num.Intn(lenIPBlocks)]
-	ipBlock0, _ := ip2long(ipBlock[0])
-	ipBlock1, _ := ip2long(ipBlock[1])
+	ipBlock0, _ := ipToUint32(ipBlock[0])
+	ipBlock1, _ := ipToUint32(ipBlock[1])
 	num := i.rand.Num.Int32Bt(int32(ipBlock0), int32(ipBlock1))
-	return long2ip(uint32(num))
+	return uint32ToIP(uint32(num))
 }
 
 func (i *Internet) MACAddress() string {
@@ -173,15 +173,13 @@ func (i *Internet) MACAddress() string {
 	return strings.Join(mac, ":")
 }
 
-// REFACTOR: 名前を変える
-func long2ip(long uint32) net.IP {
+func uint32ToIP(long uint32) net.IP {
 	ip := make(net.IP, 4)
 	binary.BigEndian.PutUint32(ip, long)
 	return ip
 }
 
-// REFACTOR: 名前を変える
-func ip2long(ipStr string) (uint32, error) {
+func ipToUint32(ipStr string) (uint32, error) {
 	ip := net.ParseIP(ipStr)
 	if ip == nil {
 		return 0, fmt.Errorf("invalid IP address: %s", ipStr)
