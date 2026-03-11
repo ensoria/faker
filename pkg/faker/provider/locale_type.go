@@ -15,7 +15,7 @@ type People struct {
 	LastNames         []string
 	TitleMales        []string
 	TitleFemales      []string
-	Suffixes          []string // REFACTOR: Rename to `PersonNameSuffixes``
+	Suffixes          []string
 	MaleNameFormats   []string
 	CreateNameMale    func(any) any
 	FemaleNameFormats []string
