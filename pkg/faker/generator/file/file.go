@@ -9,11 +9,17 @@ import (
 	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
+// File provides methods for generating random file-related data and creating files.
+//
+// ランダムなファイル関連データの生成やファイル作成のメソッドを提供する構造体。
 type File struct {
 	rand *core.Rand
 	data *provider.Files
 }
 
+// New creates a new File instance with the given random source and global data.
+//
+// 指定されたランダムソースとグローバルデータで新しいFileインスタンスを作成する。
 func New(rand *core.Rand, global *provider.Global) *File {
 	return &File{
 		rand,
@@ -25,18 +31,28 @@ func (f *File) randomEntry() *provider.MIMEEntry {
 	return f.data.MIMEEntries[f.rand.Num.Intn(len(f.data.MIMEEntries))]
 }
 
+// MIMEType returns a random MIME type string.
+//
+// ランダムなMIMEタイプ文字列を返す。
 func (f *File) MIMEType() string {
 	return f.randomEntry().Type
 }
 
+// Extension returns a random file extension.
+//
+// ランダムなファイル拡張子を返す。
 func (f *File) Extension() string {
 	entry := f.randomEntry()
 	return f.rand.Slice.StrElem(entry.Extensions)
 }
 
-// Create a file with the given content and extension.
-// File name will be a UUID.
-// extension should be without "."
+// WriteWithText creates a file with the given text content and extension.
+// The file name is randomly generated. The extension should not include a dot.
+// If returnFullPath is true, the absolute path is returned.
+//
+// 指定されたテキスト内容と拡張子でファイルを作成する。
+// ファイル名はランダムに生成される。拡張子にドットは含めない。
+// returnFullPathがtrueの場合、絶対パスを返す。
 func (f *File) WriteWithText(
 	destDir string,
 	content string,
@@ -66,10 +82,13 @@ func (f *File) WriteWithText(
 	return filePath, nil
 }
 
-// Create a file and copy the content from the source file.
-// File name will be a UUID.
-// Specify `srcFilePath` the path to the source file. Not directory name.
-// extension should be without "."
+// CopyFrom creates a file by copying content from a source file.
+// The file name is randomly generated. The extension should not include a dot.
+// If returnFullPath is true, the absolute path is returned.
+//
+// ソースファイルからコンテンツをコピーしてファイルを作成する。
+// ファイル名はランダムに生成される。拡張子にドットは含めない。
+// returnFullPathがtrueの場合、絶対パスを返す。
 func (f *File) CopyFrom(
 	destDir string,
 	srcFilePath string,

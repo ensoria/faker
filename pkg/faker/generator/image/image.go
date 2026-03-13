@@ -14,12 +14,18 @@ import (
 	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
+// Image provides methods for generating random dummy images.
+//
+// ランダムなダミー画像を生成するメソッドを提供する構造体。
 type Image struct {
 	rand    *core.Rand
 	data    *provider.Images
 	logSkip int
 }
 
+// New creates a new Image instance with the given random source and global data.
+//
+// 指定されたランダムソースとグローバルデータで新しいImageインスタンスを作成する。
 func New(rand *core.Rand, global *provider.Global) *Image {
 	return &Image{
 		rand,
@@ -28,6 +34,9 @@ func New(rand *core.Rand, global *provider.Global) *Image {
 	}
 }
 
+// ImageFormat represents the image file format.
+//
+// 画像ファイルのフォーマットを表す型。
 type ImageFormat string
 
 const (
@@ -36,10 +45,16 @@ const (
 	GIF = ImageFormat("gif")
 )
 
+// MaxHeightWidth is the maximum allowed width and height in pixels (3840px).
+//
+// 許可される最大の幅と高さ（3840ピクセル）。
 const MaxHeightWidth = 3840
 
-// the image content will be just white blank image
-// width and height should be less than or eq 3840px
+// Binary generates a white blank image as binary data.
+// Width and height should be 3840px or less.
+//
+// 白い空白画像をバイナリデータとして生成する。
+// 幅と高さは3840ピクセル以下にすること。
 func (i *Image) Binary(width int, height int, format ImageFormat) ([]byte, error) {
 	imgWidth := width
 	if width > MaxHeightWidth {
@@ -83,8 +98,11 @@ func (i *Image) Binary(width int, height int, format ImageFormat) ([]byte, error
 	return buf.Bytes(), nil
 }
 
-// the image content will be just white blank image
-// width and height should be less than or eq 3840px
+// Object generates a white blank image as an image.Image object.
+// Width and height should be 3840px or less.
+//
+// 白い空白画像をimage.Imageオブジェクトとして生成する。
+// 幅と高さは3840ピクセル以下にすること。
 func (i *Image) Object(width int, height int, format ImageFormat) (image.Image, error) {
 	i.logSkip = 2
 	binary, err := i.Binary(width, height, format)
@@ -97,8 +115,11 @@ func (i *Image) Object(width int, height int, format ImageFormat) (image.Image, 
 	return obj, errDecode
 }
 
-// the image content will be just white blank image
-// width and height should be less than or eq 3840px
+// Base64 generates a white blank image as a Base64-encoded string.
+// Width and height should be 3840px or less.
+//
+// 白い空白画像をBase64エンコードされた文字列として生成する。
+// 幅と高さは3840ピクセル以下にすること。
 func (i *Image) Base64(width int, height int, format ImageFormat) (string, error) {
 	i.logSkip = 2
 	img, err := i.Binary(width, height, format)

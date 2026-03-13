@@ -22,12 +22,18 @@ const (
 	passwordSpecialChar    = '!'
 )
 
+// Internet provides methods for generating random internet-related data.
+//
+// ランダムなインターネット関連データを生成するメソッドを提供する構造体。
 type Internet struct {
 	rand  *core.Rand
 	data  *provider.Internets
 	words []string
 }
 
+// New creates a new Internet instance with the given random source and global data.
+//
+// 指定されたランダムソースとグローバルデータで新しいInternetインスタンスを作成する。
 func New(rand *core.Rand, global *provider.Global) *Internet {
 	return &Internet{
 		rand:  rand,
@@ -36,18 +42,27 @@ func New(rand *core.Rand, global *provider.Global) *Internet {
 	}
 }
 
+// FirstName returns a random lowercase first name for use in internet identifiers.
+//
+// インターネット識別子用のランダムな小文字のファーストネームを返す。
 func (i *Internet) FirstName() string {
 	fName := i.rand.Slice.StrElem(i.data.FirstNames)
 	without1Quote := strings.ReplaceAll(fName, "'", "")
 	return strings.ToLower(without1Quote)
 }
 
+// LastName returns a random lowercase last name for use in internet identifiers.
+//
+// インターネット識別子用のランダムな小文字のラストネームを返す。
 func (i *Internet) LastName() string {
 	lName := i.rand.Slice.StrElem(i.data.LastNames)
 	without1Quote := strings.ReplaceAll(lName, "'", "")
 	return strings.ToLower(without1Quote)
 }
 
+// UserName returns a randomly formatted username.
+//
+// ランダムにフォーマットされたユーザー名を返す。
 func (i *Internet) UserName() string {
 	baseFormat := i.rand.Slice.StrElem(i.data.UserNameFormats)
 	format := i.rand.Str.AlphaDigitsLike(baseFormat)
@@ -55,22 +70,34 @@ func (i *Internet) UserName() string {
 	return util.RenderTemplate(format, userName)
 }
 
+// DomainWord returns a random domain word (lowercase last name).
+//
+// ランダムなドメインワード（小文字のラストネーム）を返す。
 func (i *Internet) DomainWord() string {
 	lastName := i.rand.Slice.StrElem(i.data.LastNames)
 	word := strings.ToLower(lastName)
 	return word
 }
 
+// TLD returns a random top-level domain.
+//
+// ランダムなトップレベルドメインを返す。
 func (i *Internet) TLD() string {
 	return i.rand.Slice.StrElem(i.data.TLD)
 }
 
-// example: "howell.com"
+// DomainName returns a random domain name.
+// Example: "howell.com"
+//
+// ランダムなドメイン名を返す。
 func (i *Internet) DomainName() string {
 	return i.DomainWord() + "." + i.TLD()
 }
 
-// example: "jude.borer@oberbrunner.com"
+// Email returns a random email address.
+// Example: "jude.borer@oberbrunner.com"
+//
+// ランダムなメールアドレスを返す。
 func (i *Internet) Email() string {
 	format := i.rand.Slice.StrElem(i.data.EmailFormats)
 	data := i.data.CreateEmail(i)
@@ -81,6 +108,9 @@ func (i *Internet) Email() string {
 // If includeSpecial is true, some characters will be special characters.
 // Example: "18w50q2412G5Iky60QL" (without special)
 // Example: "k3$Rp8!mZ2&xQ" (with special)
+//
+// ランダムなパスワード文字列を生成する。
+// includeSpecialがtrueの場合、一部の文字が特殊文字になる。
 func (i *Internet) Password(includeSpecial bool) string {
 	length := i.rand.Num.IntBt(passwordMinLength, passwordMaxLength)
 	var like []byte
@@ -97,6 +127,9 @@ func (i *Internet) Password(includeSpecial bool) string {
 // Slug generates a URL slug from random lorem words joined by hyphens.
 // If variableWordCount is true, the actual word count varies around nbWords.
 // Example: "aut-repellat-commodi-vel-itaque-nihil"
+//
+// ランダムなLoremの単語をハイフンで結合してURLスラッグを生成する。
+// variableWordCountがtrueの場合、実際の単語数はnbWords前後で変動する。
 func (i *Internet) Slug(nbWords int, variableWordCount bool) string {
 	if nbWords <= 0 {
 		nbWords = defaultSlugWordCount
@@ -116,6 +149,8 @@ func (i *Internet) Slug(nbWords int, variableWordCount bool) string {
 
 // URL generates a random URL.
 // Example: "http://www.runolfsdottir.com/aut-repellat-commodi"
+//
+// ランダムなURLを生成する。
 func (i *Internet) URL() string {
 	format := i.rand.Slice.StrElem(i.data.URLFormats)
 
@@ -132,6 +167,9 @@ type urlData struct {
 	Slug       string
 }
 
+// IPv4 returns a random IPv4 address.
+//
+// ランダムなIPv4アドレスを返す。
 func (i *Internet) IPv4() net.IP {
 	var ipNum int
 	if i.rand.Bool.Evenly() {
@@ -143,6 +181,9 @@ func (i *Internet) IPv4() net.IP {
 	return uint32ToIP(uint32(ipNum))
 }
 
+// IPv6 returns a random IPv6 address string.
+//
+// ランダムなIPv6アドレス文字列を返す。
 func (i *Internet) IPv6() string {
 	var res []string
 
@@ -154,6 +195,9 @@ func (i *Internet) IPv6() string {
 
 }
 
+// LocalIPv4 returns a random local/private IPv4 address.
+//
+// ランダムなローカル/プライベートIPv4アドレスを返す。
 func (i *Internet) LocalIPv4() net.IP {
 	lenIPBlocks := len(i.data.LocalIPBlocks)
 	ipBlock := i.data.LocalIPBlocks[i.rand.Num.Intn(lenIPBlocks)]
@@ -163,6 +207,9 @@ func (i *Internet) LocalIPv4() net.IP {
 	return uint32ToIP(uint32(num))
 }
 
+// MACAddress returns a random MAC address string.
+//
+// ランダムなMACアドレス文字列を返す。
 func (i *Internet) MACAddress() string {
 	var mac []string
 

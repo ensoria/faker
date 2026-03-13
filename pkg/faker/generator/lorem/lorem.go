@@ -8,11 +8,17 @@ import (
 	"github.com/ensoria/faker/pkg/faker/provider"
 )
 
+// Lorem provides methods for generating random lorem ipsum text.
+//
+// ランダムなLoremテキストを生成するメソッドを提供する構造体。
 type Lorem struct {
 	rand *core.Rand
 	data *provider.Lorems
 }
 
+// New creates a new Lorem instance with the given random source and global data.
+//
+// 指定されたランダムソースとグローバルデータで新しいLoremインスタンスを作成する。
 func New(rand *core.Rand, global *provider.Global) *Lorem {
 	return &Lorem{
 		rand,
@@ -20,12 +26,18 @@ func New(rand *core.Rand, global *provider.Global) *Lorem {
 	}
 }
 
+// Word returns a random lorem word.
+//
+// ランダムなLoremの単語を返す。
 func (l *Lorem) Word() string {
 	return l.rand.Slice.StrElem(l.data.Words)
 }
 
-// 複数の文字を配列として返す
-// num: 1以上の整数
+// WordSliceFixedLength returns a slice of random words with the specified count.
+// num must be 1 or greater.
+//
+// 指定された数のランダムな単語のスライスを返す。
+// numは1以上の整数。
 func (l *Lorem) WordSliceFixedLength(num int) []string {
 	if num < 1 {
 		num = 1
@@ -37,7 +49,11 @@ func (l *Lorem) WordSliceFixedLength(num int) []string {
 	return words
 }
 
-// maxNum: 2以上の整数
+// WordSlice returns a slice of random words with a random count up to maxNum.
+// maxNum must be 2 or greater.
+//
+// maxNum以下のランダムな数の単語のスライスを返す。
+// maxNumは2以上の整数。
 func (l *Lorem) WordSlice(maxNum int) []string {
 	if maxNum < 2 {
 		maxNum = 2
@@ -46,21 +62,30 @@ func (l *Lorem) WordSlice(maxNum int) []string {
 	return l.WordSliceFixedLength(wordNum)
 }
 
-// 複数の文字を1つの文字列として返す
+// Words returns multiple random words as a single space-separated string.
+//
+// 複数のランダムな単語を1つのスペース区切りの文字列として返す。
 func (l *Lorem) Words(num int) string {
 	words := l.WordSlice(num)
 	return strings.Join(words, " ")
 }
 
-// 指定した文字数でランダムな文字列を返す
-// Words()との違いは、最初の文字を大文字になっていることと、最後にピリオドがついていること。
+// SentenceFixedLength returns a sentence with the specified number of words.
+// The first letter is capitalized and the sentence ends with a period.
+//
+// 指定された単語数の文を返す。
+// 最初の文字は大文字になり、末尾にピリオドが付く。
 func (l *Lorem) SentenceFixedLength(wordNum int) string {
 	words := l.WordSliceFixedLength(wordNum)
 	words[0] = util.CapFirstLetter(words[0])
 	return strings.Join(words, " ") + "."
 }
 
-// 文字数の最大値を指定して、それ以下の文字数でランダムな文字列を返す
+// Sentence returns a sentence with a random number of words up to maxWordCount.
+// maxWordCount must be 2 or greater.
+//
+// maxWordCount以下のランダムな単語数の文を返す。
+// maxWordCountは2以上の整数。
 func (l *Lorem) Sentence(maxWordCount int) string {
 	if maxWordCount < 2 {
 		maxWordCount = 2
@@ -69,6 +94,9 @@ func (l *Lorem) Sentence(maxWordCount int) string {
 	return l.SentenceFixedLength(wordNum)
 }
 
+// SentenceSliceFixedLength returns a slice of sentences with the specified count.
+//
+// 指定された数の文のスライスを返す。
 func (l *Lorem) SentenceSliceFixedLength(sentenceNum int, wordMaxNum int) []string {
 	var sentences []string
 	for i := 0; i < sentenceNum; i++ {
@@ -78,7 +106,9 @@ func (l *Lorem) SentenceSliceFixedLength(sentenceNum int, wordMaxNum int) []stri
 	return sentences
 }
 
-// 複数の文を配列で返す
+// SentenceSlice returns a slice of sentences with a random count up to sentenceMaxNum.
+//
+// sentenceMaxNum以下のランダムな数の文のスライスを返す。
 func (l *Lorem) SentenceSlice(sentenceMaxNum int, wordMaxNum int) []string {
 	if sentenceMaxNum < 2 {
 		sentenceMaxNum = 2
@@ -90,15 +120,20 @@ func (l *Lorem) SentenceSlice(sentenceMaxNum int, wordMaxNum int) []string {
 	return l.SentenceSliceFixedLength(sentenceNum, wordMaxNum)
 }
 
-// 複数の文を1つの文字列で返す
+// Sentences returns multiple sentences as a single space-separated string.
+//
+// 複数の文を1つのスペース区切りの文字列として返す。
 func (l *Lorem) Sentences(sentenceMaxNum int, wordMaxNum int) string {
 
 	sentences := l.SentenceSlice(sentenceMaxNum, wordMaxNum)
 	return strings.Join(sentences, " ")
 }
 
-// paragraphNum must be greater than or eq 1
-// sentenceMaxNum must be greater than or eq 2
+// ParagraphSliceFixedLength returns a slice of paragraphs with the specified count.
+// paragraphNum must be 1 or greater. sentenceMaxNum must be 2 or greater.
+//
+// 指定された数の段落のスライスを返す。
+// paragraphNumは1以上、sentenceMaxNumは2以上の整数。
 func (l *Lorem) ParagraphSliceFixedLength(paragraphNum int, sentenceMaxNum int) []string {
 	if paragraphNum < 1 {
 		paragraphNum = 1
@@ -116,6 +151,9 @@ func (l *Lorem) ParagraphSliceFixedLength(paragraphNum int, sentenceMaxNum int) 
 	return paragraphs
 }
 
+// ParagraphSlice returns a slice of paragraphs with a random count up to paragraphMaxNum.
+//
+// paragraphMaxNum以下のランダムな数の段落のスライスを返す。
 func (l *Lorem) ParagraphSlice(paragraphMaxNum int, sentenceMaxNum int) []string {
 	if paragraphMaxNum < 2 {
 		paragraphMaxNum = 2
@@ -127,6 +165,9 @@ func (l *Lorem) ParagraphSlice(paragraphMaxNum int, sentenceMaxNum int) []string
 	return l.ParagraphSliceFixedLength(paragraphNum, sentenceMaxNum)
 }
 
+// Paragraphs returns multiple paragraphs as a single newline-separated string.
+//
+// 複数の段落を1つの改行区切りの文字列として返す。
 func (l *Lorem) Paragraphs(paragraphMaxNum int, sentenceMaxNum int) string {
 	paragraphs := l.ParagraphSlice(paragraphMaxNum, sentenceMaxNum)
 	return strings.Join(paragraphs, "\n")

@@ -4,6 +4,8 @@ import "strconv"
 
 // CalcLuhnChecksum calculates the Luhn checksum of a numeric string.
 // See: http://en.wikipedia.org/wiki/Luhn_algorithm
+//
+// 数値文字列のLuhnチェックサムを計算する。
 func CalcLuhnChecksum(number string) int {
 	length := len(number)
 	sum := 0
@@ -25,6 +27,8 @@ func CalcLuhnChecksum(number string) int {
 
 // ComputeLuhnCheckDigit calculates the check digit that should be appended
 // to make a number valid according to the Luhn algorithm.
+//
+// Luhnアルゴリズムに基づいて有効な番号にするためのチェックディジットを計算する。
 func ComputeLuhnCheckDigit(partialNumber string) string {
 	checkDigit := CalcLuhnChecksum(partialNumber + "0")
 
@@ -36,6 +40,8 @@ func ComputeLuhnCheckDigit(partialNumber string) string {
 }
 
 // IsLuhnValid checks whether a number (partial number + check digit) is Luhn compliant.
+//
+// 番号がLuhnアルゴリズムに準拠しているかを検証する。
 func IsLuhnValid(number string) bool {
 	return CalcLuhnChecksum(number) == 0
 }

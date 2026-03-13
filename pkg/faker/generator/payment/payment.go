@@ -18,6 +18,8 @@ const (
 )
 
 // CreditCardDetails holds credit card information.
+//
+// クレジットカード情報を保持する構造体。
 type CreditCardDetails struct {
 	Type           string
 	Number         string
@@ -25,11 +27,17 @@ type CreditCardDetails struct {
 	ExpirationDate string
 }
 
+// Payment provides methods for generating random payment data.
+//
+// ランダムな決済データを生成するメソッドを提供する構造体。
 type Payment struct {
 	rand *core.Rand
 	data *provider.Payments
 }
 
+// New creates a new Payment instance with the given random source and global data.
+//
+// 指定されたランダムソースとグローバルデータで新しいPaymentインスタンスを作成する。
 func New(rand *core.Rand, global *provider.Global) *Payment {
 	return &Payment{
 		rand,
@@ -39,6 +47,8 @@ func New(rand *core.Rand, global *provider.Global) *Payment {
 
 // CreditCardType returns a random credit card vendor name.
 // Example: "MasterCard"
+//
+// ランダムなクレジットカードブランド名を返す。
 func (p *Payment) CreditCardType() string {
 	return p.rand.Slice.StrElem(p.data.CardVendors)
 }
@@ -47,6 +57,9 @@ func (p *Payment) CreditCardType() string {
 // cardType supports "Visa", "MasterCard", "American Express", "Discover Card", "JCB", and "Visa Retired".
 // If cardType is empty, a random type is selected.
 // Example: "4485480221084675"
+//
+// クレジットカード番号の文字列を返す。
+// cardTypeが空の場合、ランダムなブランドが選択される。
 func (p *Payment) CreditCardNumber(cardType string) string {
 	if cardType == "" {
 		cardType = p.CreditCardType()
@@ -67,6 +80,8 @@ func (p *Payment) CreditCardNumber(cardType string) string {
 // CreditCardNumberFormatted returns a formatted credit card number with separators every 4 digits.
 // If cardType is empty, a random type is selected.
 // Example: "4485-4802-2108-4675"
+//
+// 4桁ごとにセパレーターで区切られたクレジットカード番号を返す。
 func (p *Payment) CreditCardNumberFormatted(cardType string, separator string) string {
 	number := p.CreditCardNumber(cardType)
 	if number == "" {
@@ -92,6 +107,8 @@ func (p *Payment) CreditCardNumberFormatted(cardType string, separator string) s
 // CreditCardExpirationDate returns a random expiration date for a credit card.
 // If valid is true, the date will be between now and 36 months in the future.
 // If valid is false, the date will be between 36 months ago and 36 months in the future.
+//
+// クレジットカードのランダムな有効期限を返す。
 func (p *Payment) CreditCardExpirationDate(valid bool) time.Time {
 	now := time.Now()
 	future := now.AddDate(0, expirationValidMonths, 0)
@@ -108,6 +125,8 @@ func (p *Payment) CreditCardExpirationDate(valid bool) time.Time {
 // If valid is true, the date will be valid (in the future).
 // format uses Go time format layout. If empty, defaults to "01/06" (MM/YY).
 // Example: "04/26"
+//
+// フォーマットされた有効期限の文字列を返す。
 func (p *Payment) CreditCardExpirationDateString(valid bool, format string) string {
 	if format == "" {
 		format = defaultExpirationDateFormat
@@ -118,6 +137,8 @@ func (p *Payment) CreditCardExpirationDateString(valid bool, format string) stri
 // CreditCardDetailsResult returns credit card details including type, number, and expiration date.
 // The name field is set from the provided holderName parameter.
 // If valid is true, the expiration date will be valid.
+//
+// ブランド、番号、有効期限を含むクレジットカードの詳細を返す。
 func (p *Payment) CreditCardDetailsResult(valid bool, holderName string) *CreditCardDetails {
 	cardType := p.CreditCardType()
 
@@ -133,6 +154,8 @@ func (p *Payment) CreditCardDetailsResult(valid bool, holderName string) *Credit
 // countryCode is an ISO 3166-1 alpha-2 country code. If empty, a random country is selected.
 // prefix is an optional prefix for the bank account number portion.
 // See: http://en.wikipedia.org/wiki/International_Bank_Account_Number
+//
+// 国際銀行口座番号（IBAN）を生成する。
 func (p *Payment) IBAN(countryCode string, prefix string) string {
 	if countryCode == "" {
 		countryCode, _ = core.GetRandomKeyValue(p.rand.Map, p.data.IBANFormats)
@@ -184,6 +207,8 @@ func (p *Payment) IBAN(countryCode string, prefix string) string {
 // SWIFTBICNumber generates a random SWIFT/BIC number.
 // See: http://en.wikipedia.org/wiki/ISO_9362
 // Example: "RZTIAT22263"
+//
+// ランダムなSWIFT/BIC番号を生成する。
 func (p *Payment) SWIFTBICNumber() string {
 	// SWIFT/BIC format: 4 letters (bank) + 2 letters (country) + 2 alphanumeric (location) + optional 3 alphanumeric (branch)
 	var result strings.Builder
@@ -222,6 +247,8 @@ func (p *Payment) SWIFTBICNumber() string {
 }
 
 // expandIBANFormat expands an IBAN format definition into a string of character classes.
+//
+// IBANフォーマット定義を文字クラスの文字列に展開する。
 func (p *Payment) expandIBANFormat(format [][2]any) string {
 	var expanded strings.Builder
 	for _, item := range format {
@@ -233,6 +260,8 @@ func (p *Payment) expandIBANFormat(format [][2]any) string {
 }
 
 // randomUpperLetter returns a random uppercase letter (A-Z).
+//
+// ランダムな大文字アルファベット（A-Z）を返す。
 func (p *Payment) randomUpperLetter() string {
 	idx := p.rand.Num.Intn(len(upperLetters))
 	return fmt.Sprintf("%c", upperLetters[idx])

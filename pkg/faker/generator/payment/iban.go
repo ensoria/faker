@@ -5,6 +5,8 @@ import "fmt"
 // CalcIBANChecksum generates the two-digit IBAN checksum for a given IBAN string.
 // The input iban should have the country code as the first two characters,
 // followed by "00" as placeholder check digits, then the BBAN.
+//
+// 指定されたIBAN文字列の2桁のIBANチェックサムを生成する。
 func CalcIBANChecksum(iban string) string {
 	// Move first four characters to end and set check digits to "00"
 	checkString := iban[4:] + iban[0:2] + "00"
@@ -26,18 +28,24 @@ func CalcIBANChecksum(iban string) string {
 }
 
 // IsIBANValid checks whether an IBAN has a valid checksum.
+//
+// IBANのチェックサムが有効かどうかを検証する。
 func IsIBANValid(iban string) bool {
 	return CalcIBANChecksum(iban) == iban[2:4]
 }
 
 // ibanAlphaToNumber converts an uppercase letter to its IBAN numeric equivalent.
 // A=10, B=11, ..., Z=35
+//
+// 大文字アルファベットをIBANの数値に変換する（A=10, B=11, ..., Z=35）。
 func ibanAlphaToNumber(ch rune) int {
 	return int(ch) - 55 // 'A' is 65, so 65-55=10
 }
 
 // ibanMod97 calculates mod 97 on a numeric string.
 // It processes the string digit by digit to avoid integer overflow.
+//
+// 数値文字列に対してmod 97を計算する。
 func ibanMod97(number string) int {
 	checksum := int(number[0] - '0')
 
