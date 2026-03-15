@@ -10,6 +10,7 @@ type Global struct {
 	Payments     *Payments
 	PhoneNumbers *PhoneNumbers
 	UserAgents   *UserAgents
+
 	// NOTICE: All fields name should be PLURAL
 }
 

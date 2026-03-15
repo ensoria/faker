@@ -21,6 +21,9 @@ import (
 	"github.com/ensoria/faker/pkg/faker/provider/locale/en_US"
 )
 
+// Faker is the main entry point that aggregates all fake data generators.
+//
+// すべてのフェイクデータジェネレーターを集約するメインのエントリーポイント構造体。
 type Faker struct {
 	Rand        *core.Rand
 	Person      *person.Person
@@ -40,11 +43,17 @@ type Faker struct {
 
 // REF: https://fakerphp.github.io/
 
+// Create creates a new Faker instance with the default en_US locale.
+//
+// デフォルトのen_USロケールで新しいFakerインスタンスを作成する。
 func Create() *Faker {
 	localized := en_US.New()
 	return CreateWithLocale(localized)
 }
 
+// CreateWithLocale creates a new Faker instance with the specified locale data.
+//
+// 指定されたロケールデータで新しいFakerインスタンスを作成する。
 func CreateWithLocale(localized *provider.Localized) *Faker {
 	coreRand := core.NewRand(util.RandSeed())
 	global := global.New()
