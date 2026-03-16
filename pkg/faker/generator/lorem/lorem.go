@@ -170,5 +170,5 @@ func (l *Lorem) ParagraphSlice(paragraphMaxNum int, sentenceMaxNum int) []string
 // 複数の段落を1つの改行区切りの文字列として返す。
 func (l *Lorem) Paragraphs(paragraphMaxNum int, sentenceMaxNum int) string {
 	paragraphs := l.ParagraphSlice(paragraphMaxNum, sentenceMaxNum)
-	return strings.Join(paragraphs, "\n")
+	return strings.Join(paragraphs, "\n\n")
 }

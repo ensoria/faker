@@ -45,8 +45,11 @@ var _ = Describe("UserAgent", func() {
 			r := ua.MSEdge()
 			Expect(r).To(HavePrefix("Mozilla/5.0 "))
 			Expect(r).To(ContainSubstring("AppleWebKit/"))
-			Expect(r).To(ContainSubstring("Chrome/"))
 			hasEdg := strings.Contains(r, "Edg/") || strings.Contains(r, "EdgA/") || strings.Contains(r, "EdgiOS/")
+			// iOS Edge (EdgiOS) does not include "Chrome/" in the UA string, so only assert Chrome/ for non-iOS variants.
+			if !strings.Contains(r, "EdgiOS/") {
+				Expect(r).To(ContainSubstring("Chrome/"))
+			}
 			Expect(hasEdg).To(BeTrue())
 			testutil.Output("UserAgent.MSEdge", r)
 		})
