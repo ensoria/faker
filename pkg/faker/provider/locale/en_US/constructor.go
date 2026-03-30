@@ -1,13 +1,13 @@
 package en_US
 
 import (
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 func New() *provider.Localized {
 	return &provider.Localized{
-		People:    CreatePeople(),
-		Addresses: CreateAddresses(),
+		People:       CreatePeople(),
+		Addresses:    CreateAddresses(),
 		Companies:    CreateCompanies(),
 		PhoneNumbers: CreatePhoneNumbers(),
 	}

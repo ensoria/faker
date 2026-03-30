@@ -3,9 +3,9 @@ package lorem
 import (
 	"strings"
 
-	"github.com/ensoria/faker/pkg/faker/common/util"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/common/util"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 // Lorem provides methods for generating random lorem ipsum text.

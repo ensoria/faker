@@ -3,7 +3,7 @@ package core
 import (
 	"math/rand"
 
-	"github.com/ensoria/faker/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 // RandSlice provides methods for selecting random elements from slices.

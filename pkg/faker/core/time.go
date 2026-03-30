@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ensoria/faker/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 // RandTime provides methods for generating random time.Time and time.Duration values.

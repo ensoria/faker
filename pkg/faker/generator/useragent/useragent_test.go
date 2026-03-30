@@ -6,12 +6,12 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/ensoria/faker/pkg/faker/common/util"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/generator/useragent"
-	"github.com/ensoria/faker/pkg/faker/provider"
-	"github.com/ensoria/faker/pkg/faker/provider/global"
-	"github.com/ensoria/faker/pkg/faker/testutil"
+	"github.com/ensoria/gofake/pkg/faker/common/util"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/generator/useragent"
+	"github.com/ensoria/gofake/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/provider/global"
+	"github.com/ensoria/gofake/pkg/faker/testutil"
 )
 
 var _ = Describe("UserAgent", func() {

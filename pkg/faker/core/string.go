@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/ensoria/faker/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
