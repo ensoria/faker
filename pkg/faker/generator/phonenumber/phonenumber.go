@@ -3,9 +3,9 @@ package phonenumber
 import (
 	"bytes"
 
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/generator/payment"
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/generator/payment"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 const (

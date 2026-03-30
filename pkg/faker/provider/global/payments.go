@@ -1,6 +1,6 @@
 package global
 
-import "github.com/ensoria/faker/pkg/faker/provider"
+import "github.com/ensoria/gofake/pkg/faker/provider"
 
 func CreatePayments() *provider.Payments {
 	return &provider.Payments{

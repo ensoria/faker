@@ -9,7 +9,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/ensoria/faker/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 // ConvertToAnySlice converts a typed slice (e.g. []string, []int) to []any.

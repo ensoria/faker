@@ -1,15 +1,15 @@
 package global
 
-import "github.com/ensoria/faker/pkg/faker/provider"
+import "github.com/ensoria/gofake/pkg/faker/provider"
 
 func New() *provider.Global {
 	return &provider.Global{
-		Colors:    CreateColors(),
-		Files:     CreateFiles(),
-		Images:    CreateImages(),
-		Internets: CreateInternets(),
-		Lorems:    CreateLorems(),
-		Medicals:  CreateMedicals(),
+		Colors:       CreateColors(),
+		Files:        CreateFiles(),
+		Images:       CreateImages(),
+		Internets:    CreateInternets(),
+		Lorems:       CreateLorems(),
+		Medicals:     CreateMedicals(),
 		Payments:     CreatePayments(),
 		PhoneNumbers: CreatePhoneNumbers(),
 		UserAgents:   CreateUserAgents(),

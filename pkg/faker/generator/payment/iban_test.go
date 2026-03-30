@@ -4,7 +4,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/ensoria/faker/pkg/faker/generator/payment"
+	"github.com/ensoria/gofake/pkg/faker/generator/payment"
 )
 
 var _ = Describe("IBAN", func() {
