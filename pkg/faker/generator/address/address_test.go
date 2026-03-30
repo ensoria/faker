@@ -4,12 +4,12 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/ensoria/faker/pkg/faker/common/util"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/generator/address"
-	"github.com/ensoria/faker/pkg/faker/provider/locale/en_US"
-	"github.com/ensoria/faker/pkg/faker/provider/locale/ja_JP"
-	"github.com/ensoria/faker/pkg/faker/testutil"
+	"github.com/ensoria/gofake/pkg/faker/common/util"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/generator/address"
+	"github.com/ensoria/gofake/pkg/faker/provider/locale/en_US"
+	"github.com/ensoria/gofake/pkg/faker/provider/locale/ja_JP"
+	"github.com/ensoria/gofake/pkg/faker/testutil"
 )
 
 var _ = Describe("Address", func() {

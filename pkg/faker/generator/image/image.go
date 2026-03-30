@@ -9,9 +9,9 @@ import (
 	"image/jpeg"
 	"image/png"
 
-	"github.com/ensoria/faker/pkg/faker/common/log"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 // Image provides methods for generating random dummy images.

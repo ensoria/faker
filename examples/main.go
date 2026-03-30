@@ -5,9 +5,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/ensoria/faker/pkg/faker"
-	fakerlog "github.com/ensoria/faker/pkg/faker/common/log"
-	"github.com/ensoria/faker/pkg/faker/provider/locale/ja_JP"
+	"github.com/ensoria/gofake/pkg/faker"
+	fakerlog "github.com/ensoria/gofake/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/provider/locale/ja_JP"
 )
 
 func main() {

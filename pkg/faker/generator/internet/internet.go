@@ -6,9 +6,9 @@ import (
 	"net"
 	"strings"
 
-	"github.com/ensoria/faker/pkg/faker/common/util"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/common/util"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 const (

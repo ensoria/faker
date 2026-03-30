@@ -1,7 +1,7 @@
 package en_US
 
 import (
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 func CreatePeople() *provider.People {

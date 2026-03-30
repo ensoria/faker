@@ -1,6 +1,6 @@
 package en_US
 
-import "github.com/ensoria/faker/pkg/faker/provider"
+import "github.com/ensoria/gofake/pkg/faker/provider"
 
 func CreatePhoneNumbers() *provider.PhoneNumbers {
 	return &provider.PhoneNumbers{

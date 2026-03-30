@@ -6,9 +6,9 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/ensoria/faker/pkg/faker/common/util"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/generator/barcode"
+	"github.com/ensoria/gofake/pkg/faker/common/util"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/generator/barcode"
 )
 
 var _ = Describe("Barcode", func() {

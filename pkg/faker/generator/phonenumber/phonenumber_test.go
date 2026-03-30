@@ -4,15 +4,15 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	"github.com/ensoria/faker/pkg/faker/common/util"
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/generator/payment"
-	"github.com/ensoria/faker/pkg/faker/generator/phonenumber"
-	"github.com/ensoria/faker/pkg/faker/provider"
-	"github.com/ensoria/faker/pkg/faker/provider/global"
-	"github.com/ensoria/faker/pkg/faker/provider/locale/en_US"
-	"github.com/ensoria/faker/pkg/faker/provider/locale/ja_JP"
-	"github.com/ensoria/faker/pkg/faker/testutil"
+	"github.com/ensoria/gofake/pkg/faker/common/util"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/generator/payment"
+	"github.com/ensoria/gofake/pkg/faker/generator/phonenumber"
+	"github.com/ensoria/gofake/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/provider/global"
+	"github.com/ensoria/gofake/pkg/faker/provider/locale/en_US"
+	"github.com/ensoria/gofake/pkg/faker/provider/locale/ja_JP"
+	"github.com/ensoria/gofake/pkg/faker/testutil"
 )
 
 var _ = Describe("PhoneNumber", func() {

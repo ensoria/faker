@@ -32,7 +32,7 @@ Go >= 1.24
 ## Installation
 
 ```
-go get github.com/ensoria/faker/pkg/faker
+go get github.com/ensoria/gofake/pkg/faker
 ```
 
 ## Creating a faker Instance
@@ -56,7 +56,7 @@ import (
 	"log"
 	"os"
 
-	fakerlog "github.com/ensoria/faker/pkg/faker/common/log"
+	fakerlog "github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 // Example: output logs to stderr
@@ -601,7 +601,7 @@ Go >= 1.24
 ## インストール
 
 ```
-go get github.com/ensoria/faker/pkg/faker
+go get github.com/ensoria/gofake/pkg/faker
 ```
 
 ## fakerのインスタンス作成
@@ -625,7 +625,7 @@ import (
 	"log"
 	"os"
 
-	fakerlog "github.com/ensoria/faker/pkg/faker/common/log"
+	fakerlog "github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 // 標準エラー出力にログを出力する例

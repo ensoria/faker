@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/ensoria/faker/pkg/faker/common/log"
+	"github.com/ensoria/gofake/pkg/faker/common/log"
 )
 
 // RandNum provides methods for generating random numeric values.

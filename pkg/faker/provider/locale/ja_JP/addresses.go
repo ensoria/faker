@@ -1,6 +1,6 @@
 package ja_JP
 
-import "github.com/ensoria/faker/pkg/faker/provider"
+import "github.com/ensoria/gofake/pkg/faker/provider"
 
 func CreateAddresses() *provider.Addresses {
 	return &provider.Addresses{

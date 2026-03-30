@@ -3,8 +3,8 @@ package color
 import (
 	"fmt"
 
-	"github.com/ensoria/faker/pkg/faker/core"
-	"github.com/ensoria/faker/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/core"
+	"github.com/ensoria/gofake/pkg/faker/provider"
 )
 
 // Color provides methods for generating random color values.

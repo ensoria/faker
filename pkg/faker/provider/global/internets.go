@@ -1,8 +1,8 @@
 package global
 
 import (
-	"github.com/ensoria/faker/pkg/faker/provider"
-	"github.com/ensoria/faker/pkg/faker/provider/locale/en_US"
+	"github.com/ensoria/gofake/pkg/faker/provider"
+	"github.com/ensoria/gofake/pkg/faker/provider/locale/en_US"
 )
 
 func CreateInternets() *provider.Internets {
