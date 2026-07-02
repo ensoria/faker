@@ -55,7 +55,30 @@ func Create() *Faker {
 //
 // 指定されたロケールデータで新しいFakerインスタンスを作成する。
 func CreateWithLocale(localized *provider.Localized) *Faker {
-	coreRand := core.NewRand(util.RandSeed())
+	return newFaker(core.NewRand(util.RandSeed()), localized)
+}
+
+// CreateWithSeed creates a new Faker instance with the default en_US locale and
+// a fixed seed, producing deterministic output (useful for tests / golden files).
+//
+// デフォルトのen_USロケールと固定シードで新しいFakerインスタンスを作成する。
+// 出力は決定的になる（テストやゴールデンファイル向け）。
+func CreateWithSeed(seed int64) *Faker {
+	return CreateWithLocaleAndSeed(en_US.New(), seed)
+}
+
+// CreateWithLocaleAndSeed creates a new Faker instance with the specified locale
+// data and a fixed seed, producing deterministic output.
+//
+// 指定されたロケールデータと固定シードで新しいFakerインスタンスを作成する。
+func CreateWithLocaleAndSeed(localized *provider.Localized, seed int64) *Faker {
+	return newFaker(core.NewRand(util.SeededRand(seed)), localized)
+}
+
+// newFaker wires all generators onto the given core.Rand and locale.
+//
+// 与えられた core.Rand とロケールで全ジェネレーターを組み立てる内部ヘルパー。
+func newFaker(coreRand *core.Rand, localized *provider.Localized) *Faker {
 	global := global.New()
 	return &Faker{
 		Rand:        coreRand,

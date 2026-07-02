@@ -54,6 +54,15 @@ func RandSeed() *rand.Rand {
 	return rand.New(rand.NewSource(time.Now().UnixNano()))
 }
 
+// SeededRand creates a new rand.Rand instance with a fixed seed, for
+// deterministic output (useful for tests and golden files).
+//
+// 固定シードで新しいrand.Randインスタンスを作成する（決定的な出力が必要な
+// テストやゴールデンファイル向け）。
+func SeededRand(seed int64) *rand.Rand {
+	return rand.New(rand.NewSource(seed))
+}
+
 // TruncateToPrecision truncates a float64 value to the specified number of decimal places.
 //
 // float64の値を指定された小数桁数で切り捨てる。
